@@ -3,28 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Festa dos 300 Mil — Luanne Trotta × Carreta Furacão</title>
-<meta name="description" content="A Luanne Trotta chegou a 300 mil seguidores e vai levar 30 seguidores pra festa na Carreta Furacão. Faça sua inscrição.">
-<meta property="og:title" content="Festa dos 300 Mil — vem de Carreta Furacão!">
-<meta property="og:description" content="30 vagas na Carreta Furacão pra festa dos 300 mil da Luanne Trotta. Embarque na Praça das Corujas às 20h.">
-<meta property="og:image" content="https://luannetrotta.com/convite/luanne.jpg">
+<title>Festa dos 300 Mil — Convite</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Você foi convidado(a) pra Festa dos 300 Mil da Luanne Trotta. Confirme sua presença na Carreta Furacão.">
+<meta property="og:title" content="Você foi convidado(a) pra Festa dos 300 Mil!">
+<meta property="og:description" content="Confirme se você vai de Carreta Furacão. Embarque na Praça das Corujas, quarta às 20h.">
+<meta property="og:image" content="https://www.luannetrotta.com/convite/luanne.jpg">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#171311">
+<meta name="theme-color" content="#12051F">
 <link rel="icon" href="/convite/favicon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;0,9..144,900;1,9..144,600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --cream:#FFF8F0;
+  --night:#12051F;
+  --night-2:#1E0A33;
   --ink:#171311;
-  --coral:#FF5A5F;
-  --sun:#FFC93C;
-  --turq:#2EC4B6;
-  --magenta:#E84393;
-  --cream-soft:#FFF1E2;
-  --line:rgba(23,19,17,0.12);
-  --font-display:'Fraunces', serif;
+  --cream:#FFF8F0;
+  --pink:#FF3DA5;
+  --yellow:#FFD23F;
+  --cyan:#2EE6D6;
+  --orange:#FF7A2F;
+  --violet:#8B5CF6;
+  --font-party:'Bungee', cursive;
   --font-body:'Space Grotesk', sans-serif;
 }
 
@@ -33,7 +35,7 @@
 html{scroll-behavior:smooth;}
 
 body{
-  background:var(--ink);
+  background:var(--night);
   color:var(--cream);
   font-family:var(--font-body);
   overflow-x:hidden;
@@ -45,409 +47,393 @@ img{max-width:100%;display:block;}
 a{color:inherit;text-decoration:none;}
 
 .container{
-  max-width:1080px;
+  max-width:1040px;
   margin:0 auto;
-  padding:0 20px;
+  padding:0 18px;
 }
 
-::selection{background:var(--coral);color:var(--cream);}
+::selection{background:var(--pink);color:var(--cream);}
 
 :focus-visible{
-  outline:3px solid var(--sun);
+  outline:3px solid var(--yellow);
   outline-offset:3px;
-  border-radius:4px;
+  border-radius:6px;
 }
 
 @media (prefers-reduced-motion: reduce){
   *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  .confetti{display:none;}
 }
 
-/* ===== NAV ===== */
-.nav{
+/* ===== CONFETTI ===== */
+.confetti{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:1;
+  overflow:hidden;
+}
+.confetti i{
   position:absolute;
-  top:0;left:0;right:0;
-  z-index:10;
+  top:-20px;
+  width:9px;height:14px;
+  border-radius:2px;
+  opacity:0.85;
+  animation:fall linear infinite;
 }
-.nav-inner{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:18px 20px;
-  max-width:1080px;
-  margin:0 auto;
+@keyframes fall{
+  0%{transform:translate3d(0,-20px,0) rotate(0deg);}
+  100%{transform:translate3d(var(--drift),105vh,0) rotate(720deg);}
 }
-.nav-logo{height:28px;width:auto;filter:brightness(0) invert(1);}
-.nav-back{
-  font-size:13px;
-  font-weight:600;
-  color:rgba(255,248,240,0.75);
-  border:1.5px solid rgba(255,248,240,0.3);
-  padding:8px 14px;
-  border-radius:100px;
-  transition:background 0.2s, color 0.2s;
-}
-.nav-back:hover{background:var(--cream);color:var(--ink);}
 
 /* ===== HERO ===== */
 .hero{
   position:relative;
-  padding:96px 0 64px;
+  padding:40px 0 64px;
   overflow:hidden;
-  background:radial-gradient(120% 80% at 80% 0%, #3A1630 0%, var(--ink) 60%);
+  background:
+    radial-gradient(60% 50% at 15% 10%, rgba(255,61,165,0.35) 0%, transparent 70%),
+    radial-gradient(50% 45% at 90% 20%, rgba(46,230,214,0.25) 0%, transparent 70%),
+    radial-gradient(70% 60% at 50% 100%, rgba(139,92,246,0.35) 0%, transparent 70%),
+    var(--night);
 }
-.glow{
-  position:absolute;
-  border-radius:50%;
-  filter:blur(70px);
-  opacity:0.45;
-  z-index:0;
+.hero .container{position:relative;z-index:2;}
+
+.top-bar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:40px;
 }
-.glow-1{width:420px;height:420px;background:var(--magenta);top:-120px;right:-120px;}
-.glow-2{width:340px;height:340px;background:var(--turq);bottom:-140px;left:-140px;opacity:0.3;}
-.glow-3{width:240px;height:240px;background:var(--sun);top:45%;left:40%;opacity:0.18;}
+.top-logo{height:30px;width:auto;filter:brightness(0) invert(1);}
+.handle{
+  font-size:13px;
+  font-weight:700;
+  color:var(--yellow);
+}
 
 .hero-grid{
-  position:relative;
-  z-index:2;
   display:grid;
-  grid-template-columns:1.15fr 0.85fr;
-  gap:48px;
+  grid-template-columns:1.1fr 0.9fr;
+  gap:44px;
   align-items:center;
 }
 
-.eyebrow{
+.tag{
   display:inline-flex;
   align-items:center;
   gap:8px;
-  background:linear-gradient(100deg, var(--coral), var(--magenta));
-  color:var(--cream);
-  padding:7px 16px 7px 12px;
+  border:2px solid var(--yellow);
+  color:var(--yellow);
+  padding:7px 16px;
   border-radius:100px;
   font-size:12.5px;
   font-weight:700;
-  letter-spacing:0.06em;
-  margin-bottom:22px;
+  letter-spacing:0.12em;
+  margin-bottom:20px;
+  text-transform:uppercase;
 }
-.live-dot{
-  width:8px;height:8px;
-  background:var(--sun);
-  border-radius:50%;
-  animation:pulse-dot 1.6s ease-in-out infinite;
-}
-@keyframes pulse-dot{
-  0%,100%{box-shadow:0 0 0 0 rgba(255,201,60,0.7);}
-  50%{box-shadow:0 0 0 6px rgba(255,201,60,0);}
-}
+.tag .spark{animation:spin 3s linear infinite;display:inline-block;}
+@keyframes spin{to{transform:rotate(360deg);}}
 
 .hero h1{
-  font-family:var(--font-display);
-  font-size:clamp(2.5rem, 7vw, 4.6rem);
-  line-height:1;
-  font-weight:900;
-  letter-spacing:-0.01em;
-  margin-bottom:20px;
+  font-family:var(--font-party);
+  font-weight:400;
+  font-size:clamp(2.3rem, 7.4vw, 4.3rem);
+  line-height:1.02;
+  margin-bottom:18px;
+  text-transform:uppercase;
 }
-.hero h1 .num{
+.hero h1 .big{
   display:block;
-  font-size:1.35em;
-  background:linear-gradient(95deg, var(--sun) 0%, var(--coral) 50%, var(--magenta) 100%);
+  font-size:1.55em;
+  line-height:0.95;
+  background:linear-gradient(95deg, var(--yellow) 0%, var(--orange) 35%, var(--pink) 70%, var(--violet) 100%);
   -webkit-background-clip:text;
   background-clip:text;
   color:transparent;
+  filter:drop-shadow(0 0 22px rgba(255,61,165,0.45));
 }
-.hero h1 em{
-  font-style:italic;
-  font-weight:600;
-  color:var(--turq);
+.hero h1 .neon{
+  color:var(--cyan);
+  text-shadow:0 0 10px rgba(46,230,214,0.8), 0 0 30px rgba(46,230,214,0.45);
 }
 
 .hero-sub{
   font-size:17px;
   line-height:1.6;
-  color:rgba(255,248,240,0.78);
-  max-width:500px;
-  margin-bottom:28px;
+  color:rgba(255,248,240,0.82);
+  max-width:480px;
+  margin-bottom:26px;
 }
-.hero-sub strong{color:var(--sun);}
+.hero-sub strong{color:var(--yellow);}
 
-.btn-primary{
-  background:var(--sun);
+.btn-party{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:linear-gradient(95deg, var(--yellow), var(--orange));
   color:var(--ink);
   padding:17px 30px;
   border-radius:100px;
   font-weight:700;
   font-size:16px;
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  box-shadow:0 6px 0 var(--coral);
   border:2px solid var(--ink);
+  box-shadow:0 6px 0 var(--pink), 0 0 30px rgba(255,210,63,0.35);
   transition:transform 0.15s, box-shadow 0.15s;
 }
-.btn-primary:hover{transform:translateY(2px);box-shadow:0 4px 0 var(--coral);}
-.btn-primary:active{transform:translateY(6px);box-shadow:0 0 0 var(--coral);}
+.btn-party:hover{transform:translateY(2px);box-shadow:0 4px 0 var(--pink), 0 0 30px rgba(255,210,63,0.35);}
+.btn-party:active{transform:translateY(6px);box-shadow:0 0 0 var(--pink);}
 
-.hero-visual{
+/* ticket */
+.ticket{
   position:relative;
-  display:flex;
-  justify-content:center;
+  max-width:330px;
+  margin:0 auto;
+  background:var(--cream);
+  color:var(--ink);
+  border-radius:24px;
+  transform:rotate(3deg);
+  box-shadow:0 0 0 3px var(--pink), 0 0 50px rgba(255,61,165,0.45), 0 30px 60px -20px rgba(0,0,0,0.7);
 }
 .ticket-photo{
   position:relative;
-  width:300px;
-  max-width:100%;
-  aspect-ratio:2/3;
-  border-radius:28px;
+  aspect-ratio:4/4.4;
+  border-radius:24px 24px 0 0;
   overflow:hidden;
-  border:3px solid var(--cream);
-  transform:rotate(3deg);
-  box-shadow:0 24px 60px -10px rgba(0,0,0,0.6);
+  background:linear-gradient(160deg, var(--pink), var(--violet));
 }
-.ticket-photo img{width:100%;height:100%;object-fit:cover;object-position:top center;}
-.float-badge{
+.ticket-photo img{width:100%;height:100%;object-fit:cover;object-position:center 15%;}
+.ticket-stamp{
   position:absolute;
-  background:var(--cream);
-  color:var(--ink);
+  top:14px;right:14px;
+  background:var(--yellow);
   border:2.5px solid var(--ink);
   border-radius:100px;
-  padding:10px 16px;
+  padding:6px 12px;
+  font-family:var(--font-party);
   font-size:13px;
-  font-weight:700;
-  display:flex;
-  align-items:center;
-  gap:6px;
-  box-shadow:0 6px 0 var(--coral);
-  z-index:3;
-  white-space:nowrap;
+  transform:rotate(8deg);
 }
-.badge-vagas{top:18px;left:-24px;transform:rotate(-6deg);}
-.badge-vagas b{color:var(--coral);font-family:var(--font-display);font-size:17px;}
-.badge-carreta{bottom:26px;right:-18px;transform:rotate(5deg);background:var(--sun);box-shadow:0 6px 0 var(--magenta);}
+.ticket-cut{
+  position:relative;
+  height:0;
+  border-top:3px dashed rgba(23,19,17,0.25);
+  margin:0 22px;
+}
+.ticket-cut::before,
+.ticket-cut::after{
+  content:'';
+  position:absolute;
+  top:-15px;
+  width:28px;height:28px;
+  border-radius:50%;
+  background:var(--night);
+}
+.ticket-cut::before{left:-38px;}
+.ticket-cut::after{right:-38px;}
+.ticket-body{padding:16px 22px 20px;}
+.ticket-title{
+  font-family:var(--font-party);
+  font-size:20px;
+  line-height:1.1;
+  margin-bottom:10px;
+}
+.ticket-row{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  color:rgba(23,19,17,0.55);
+}
+.ticket-row b{display:block;font-size:15px;color:var(--ink);letter-spacing:0;text-transform:none;margin-top:2px;}
 
 @media (max-width:860px){
-  .hero{padding:88px 0 56px;}
-  .hero-grid{grid-template-columns:1fr;gap:36px;}
-  .hero-visual{order:-1;}
-  .ticket-photo{width:220px;}
-  .badge-vagas{left:calc(50% - 170px);}
-  .badge-carreta{right:calc(50% - 160px);}
-}
-@media (max-width:400px){
-  .badge-vagas{left:0;}
-  .badge-carreta{right:0;}
+  .hero{padding:28px 0 56px;}
+  .top-bar{margin-bottom:28px;}
+  .hero-grid{grid-template-columns:1fr;gap:40px;}
+  .ticket{max-width:290px;}
 }
 
-/* ===== MARQUEE ===== */
-.marquee-strip{
-  background:linear-gradient(95deg, var(--coral) 0%, var(--magenta) 50%, var(--turq) 100%);
-  padding:13px 0;
-  overflow:hidden;
+/* ===== COUNTDOWN ===== */
+.countdown-strip{
+  position:relative;
+  z-index:2;
+  background:linear-gradient(95deg, var(--pink) 0%, var(--violet) 50%, var(--cyan) 100%);
+  padding:22px 0;
+  text-align:center;
 }
-.marquee-track{
-  display:flex;
-  gap:36px;
-  white-space:nowrap;
-  animation:scroll-left 26s linear infinite;
-  width:max-content;
-}
-@keyframes scroll-left{
-  from{transform:translateX(0);}
-  to{transform:translateX(-50%);}
-}
-.marquee-track span{
-  color:var(--cream);
-  font-family:var(--font-display);
-  font-style:italic;
-  font-weight:600;
-  font-size:17px;
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-.marquee-track span.dot{font-style:normal;color:var(--sun);}
-
-/* ===== INFO ===== */
-.section{padding:80px 0;position:relative;}
-.section-label{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
+.countdown-label{
   font-size:12.5px;
   font-weight:700;
-  letter-spacing:0.08em;
+  letter-spacing:0.14em;
   text-transform:uppercase;
-  color:var(--sun);
-  margin-bottom:14px;
+  margin-bottom:10px;
+  color:var(--cream);
 }
-.section-label::before{content:'';width:18px;height:2px;background:var(--sun);}
+.countdown{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+}
+.cd-box{
+  background:rgba(18,5,31,0.55);
+  border:2px solid rgba(255,248,240,0.35);
+  border-radius:16px;
+  min-width:74px;
+  padding:10px 8px 8px;
+}
+.cd-box b{
+  display:block;
+  font-family:var(--font-party);
+  font-weight:400;
+  font-size:30px;
+  line-height:1;
+  color:var(--yellow);
+}
+.cd-box span{font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;opacity:0.85;}
+.countdown-done{
+  font-family:var(--font-party);
+  font-size:22px;
+  color:var(--yellow);
+}
+@media (max-width:400px){
+  .countdown{gap:8px;}
+  .cd-box{min-width:64px;}
+  .cd-box b{font-size:24px;}
+}
+
+/* ===== SECTIONS ===== */
+.section{padding:72px 0;position:relative;z-index:2;}
+.section-label{
+  display:inline-block;
+  font-family:var(--font-party);
+  font-size:13px;
+  letter-spacing:0.06em;
+  color:var(--pink);
+  margin-bottom:12px;
+}
 .section h2{
-  font-family:var(--font-display);
-  font-size:clamp(1.9rem, 4.5vw, 2.7rem);
-  font-weight:800;
-  line-height:1.08;
-  margin-bottom:16px;
+  font-family:var(--font-party);
+  font-weight:400;
+  font-size:clamp(1.6rem, 4.6vw, 2.4rem);
+  line-height:1.1;
+  margin-bottom:14px;
   max-width:640px;
+  text-transform:uppercase;
 }
 .section-intro{
   font-size:16px;
-  color:rgba(255,248,240,0.7);
+  color:rgba(255,248,240,0.75);
   max-width:560px;
   line-height:1.6;
 }
 
-.info{background:var(--cream);color:var(--ink);}
-.info .section-label{color:var(--coral);}
-.info .section-label::before{background:var(--coral);}
-.info .section-intro{color:rgba(23,19,17,0.7);}
-
+/* info cards */
 .info-grid{
   display:grid;
   grid-template-columns:repeat(4, 1fr);
-  gap:18px;
-  margin-top:44px;
+  gap:16px;
+  margin-top:36px;
 }
 .info-card{
-  background:var(--cream);
-  border:2.5px solid var(--ink);
   border-radius:22px;
-  padding:24px 20px;
-  box-shadow:0 8px 0 -2px var(--ink);
+  padding:22px 18px;
+  background:rgba(255,248,240,0.05);
+  border:2px solid var(--c);
+  box-shadow:0 0 24px -6px var(--c);
 }
-.info-icon{
-  width:46px;height:46px;
-  border-radius:14px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin-bottom:16px;
-  color:#fff;
-}
-.info-icon svg{width:24px;height:24px;}
+.info-emoji{font-size:30px;margin-bottom:12px;line-height:1;}
 .info-card .k{
   font-size:12px;
   font-weight:700;
-  letter-spacing:0.06em;
+  letter-spacing:0.08em;
   text-transform:uppercase;
-  color:rgba(23,19,17,0.55);
+  color:var(--c);
   margin-bottom:4px;
 }
 .info-card .v{
-  font-family:var(--font-display);
-  font-size:22px;
-  font-weight:800;
+  font-family:var(--font-party);
+  font-size:19px;
   line-height:1.15;
 }
-.info-card.c1 .info-icon{background:var(--coral);}
-.info-card.c2 .info-icon{background:var(--turq);}
-.info-card.c3 .info-icon{background:var(--sun);color:var(--ink);}
-.info-card.c4 .info-icon{background:var(--magenta);}
-
 @media (max-width:900px){.info-grid{grid-template-columns:repeat(2,1fr);}}
-@media (max-width:420px){
-  .info-grid{gap:12px;}
-  .info-card{padding:18px 14px;}
-  .info-card .v{font-size:18px;}
+@media (max-width:400px){
+  .info-grid{gap:10px;}
+  .info-card{padding:16px 12px;}
+  .info-card .v{font-size:16px;}
 }
 
-/* ===== STEPS ===== */
-.steps{
+.notes{
+  margin-top:28px;
   display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:18px;
-  margin-top:44px;
-}
-.step{
-  border:1.5px solid rgba(255,248,240,0.18);
-  border-radius:22px;
-  padding:26px 22px;
-  background:rgba(255,248,240,0.04);
-}
-.step-num{
-  font-family:var(--font-display);
-  font-size:40px;
-  font-weight:900;
-  line-height:1;
-  margin-bottom:12px;
-  color:var(--sun);
-}
-.step:nth-child(2) .step-num{color:var(--turq);}
-.step:nth-child(3) .step-num{color:var(--coral);}
-.step h3{font-family:var(--font-display);font-size:20px;font-weight:800;margin-bottom:8px;}
-.step p{font-size:14.5px;line-height:1.6;color:rgba(255,248,240,0.7);}
-
-@media (max-width:760px){.steps{grid-template-columns:1fr;}}
-
-/* ===== FORM ===== */
-.signup{
-  background:linear-gradient(150deg, #201420 0%, var(--ink) 55%, #12201F 100%);
-  overflow:hidden;
-}
-.signup::before{
-  content:'';
-  position:absolute;
-  width:340px;height:340px;
-  border-radius:50%;
-  background:var(--coral);
-  opacity:0.14;
-  filter:blur(80px);
-  top:-100px;
-  left:5%;
-}
-.signup-grid{
-  display:grid;
-  grid-template-columns:0.85fr 1.15fr;
-  gap:48px;
-  position:relative;
-  z-index:1;
-  align-items:start;
-}
-.rules{list-style:none;margin-top:24px;}
-.rules li{
-  display:flex;
   gap:10px;
+  max-width:640px;
+}
+.note{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
   font-size:15px;
   line-height:1.5;
-  color:rgba(255,248,240,0.82);
-  margin-bottom:12px;
+  color:rgba(255,248,240,0.85);
 }
-.rules li svg{width:20px;height:20px;flex-shrink:0;color:var(--turq);margin-top:1px;}
+.note span:first-child{font-size:18px;line-height:1.3;}
 
+/* ===== FORM ===== */
+.rsvp{
+  background:
+    radial-gradient(50% 40% at 85% 10%, rgba(255,61,165,0.22) 0%, transparent 70%),
+    radial-gradient(50% 40% at 10% 90%, rgba(46,230,214,0.18) 0%, transparent 70%),
+    var(--night-2);
+}
+.rsvp-grid{
+  display:grid;
+  grid-template-columns:0.8fr 1.2fr;
+  gap:44px;
+  align-items:start;
+}
 .form-card{
   background:var(--cream);
-  border-radius:24px;
-  padding:32px;
   color:var(--ink);
+  border-radius:26px;
+  padding:30px;
+  box-shadow:0 0 0 3px var(--yellow), 0 0 50px -10px rgba(255,210,63,0.5);
 }
 .form-title{
-  font-family:var(--font-display);
-  font-size:24px;
-  font-weight:800;
-  margin-bottom:20px;
+  font-family:var(--font-party);
+  font-size:22px;
+  margin-bottom:18px;
 }
-.form-row{margin-bottom:16px;}
-.form-row label{
+.form-row{margin-bottom:15px;}
+.form-row > label,
+.form-legend{
   display:block;
   font-size:13px;
   font-weight:700;
   margin-bottom:7px;
   letter-spacing:0.02em;
 }
-.form-row label .opt{font-weight:500;color:rgba(23,19,17,0.5);}
-.form-row input,
+.form-row .opt{font-weight:500;color:rgba(23,19,17,0.5);}
+.form-row input[type=text],
+.form-row input[type=tel],
 .form-row textarea{
   width:100%;
   padding:13px 16px;
   border-radius:12px;
-  border:2px solid var(--line);
-  background:var(--cream-soft);
+  border:2px solid rgba(23,19,17,0.12);
+  background:#FFF1E2;
   font-family:var(--font-body);
   font-size:16px;
   color:var(--ink);
   transition:border-color 0.2s;
 }
 .form-row input:focus,
-.form-row textarea:focus{border-color:var(--coral);outline:none;}
-.form-row textarea{resize:vertical;min-height:84px;}
+.form-row textarea:focus{border-color:var(--pink);outline:none;}
+.form-row textarea{resize:vertical;min-height:76px;}
 .at-wrap{position:relative;}
 .at-wrap span{
   position:absolute;
@@ -457,21 +443,41 @@ a{color:inherit;text-decoration:none;}
   color:rgba(23,19,17,0.45);
   pointer-events:none;
 }
-.at-wrap input{padding-left:34px;}
-.form-cols{display:grid;grid-template-columns:1.4fr 0.6fr;gap:14px;}
-.check-row{
+.at-wrap input[type=text]{padding-left:34px;}
+
+fieldset{border:0;margin:0 0 15px;padding:0;}
+.choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.choice{position:relative;cursor:pointer;}
+.choice input{position:absolute;opacity:0;width:1px;height:1px;}
+.choice-box{
   display:flex;
-  gap:10px;
-  align-items:flex-start;
-  font-size:13.5px;
-  line-height:1.5;
-  margin:6px 0 18px;
-  color:rgba(23,19,17,0.8);
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  gap:6px;
+  min-height:118px;
+  padding:14px 10px;
+  border:2.5px solid rgba(23,19,17,0.15);
+  border-radius:18px;
+  background:#FFF1E2;
+  transition:border-color 0.15s, background 0.15s, transform 0.15s, box-shadow 0.15s;
 }
-.check-row input{width:20px;height:20px;flex-shrink:0;margin-top:1px;accent-color:var(--coral);}
+.choice-box .e{font-size:30px;line-height:1;}
+.choice-box b{font-size:15px;line-height:1.2;}
+.choice-box small{font-size:12px;color:rgba(23,19,17,0.6);line-height:1.3;}
+.choice:hover .choice-box{transform:translateY(-2px);}
+.choice input:checked + .choice-box{
+  border-color:var(--ink);
+  background:var(--yellow);
+  box-shadow:0 5px 0 var(--pink);
+}
+.choice.alt input:checked + .choice-box{background:var(--cyan);box-shadow:0 5px 0 var(--violet);}
+.choice input:focus-visible + .choice-box{outline:3px solid var(--pink);outline-offset:2px;}
+
 .form-submit{
   width:100%;
-  background:var(--coral);
+  background:linear-gradient(95deg, var(--pink), var(--violet));
   color:var(--cream);
   border:2px solid var(--ink);
   padding:17px;
@@ -482,14 +488,15 @@ a{color:inherit;text-decoration:none;}
   cursor:pointer;
   box-shadow:0 6px 0 var(--ink);
   transition:transform 0.15s, box-shadow 0.15s, opacity 0.2s;
+  margin-top:4px;
 }
 .form-submit:hover{transform:translateY(2px);box-shadow:0 4px 0 var(--ink);}
 .form-submit:disabled{opacity:0.6;cursor:wait;}
 .form-error{
   display:none;
-  background:#FFE0E2;
-  border:2px solid var(--coral);
-  color:#9B1C22;
+  background:#FFE0EE;
+  border:2px solid var(--pink);
+  color:#9B1C55;
   border-radius:12px;
   padding:12px 14px;
   font-size:14px;
@@ -504,27 +511,16 @@ a{color:inherit;text-decoration:none;}
   text-align:center;
 }
 
-.success{display:none;text-align:center;padding:12px 0;}
+.success{display:none;text-align:center;padding:10px 0;}
 .success.show{display:block;}
-.success-icon{
-  width:72px;height:72px;
-  border-radius:50%;
-  background:var(--turq);
-  color:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin:0 auto 18px;
-  border:3px solid var(--ink);
-}
-.success-icon svg{width:36px;height:36px;}
-.success h3{font-family:var(--font-display);font-size:26px;font-weight:800;margin-bottom:10px;}
-.success p{font-size:15px;line-height:1.6;color:rgba(23,19,17,0.75);margin-bottom:8px;}
+.success-emoji{font-size:58px;line-height:1;margin-bottom:14px;}
+.success h3{font-family:var(--font-party);font-weight:400;font-size:24px;margin-bottom:10px;}
+.success p{font-size:15px;line-height:1.6;color:rgba(23,19,17,0.78);margin-bottom:8px;}
 .success .btn-ig{
   display:inline-flex;
   align-items:center;
   gap:8px;
-  margin-top:14px;
+  margin-top:12px;
   background:var(--ink);
   color:var(--cream);
   padding:13px 22px;
@@ -534,157 +530,134 @@ a{color:inherit;text-decoration:none;}
 }
 
 @media (max-width:860px){
-  .signup-grid{grid-template-columns:1fr;gap:32px;}
-  .form-card{padding:24px 18px;}
+  .rsvp-grid{grid-template-columns:1fr;gap:28px;}
+  .form-card{padding:24px 16px;}
+}
+@media (max-width:360px){
+  .choice-grid{grid-template-columns:1fr;}
+  .choice-box{min-height:0;}
 }
 
 /* ===== FOOTER ===== */
 .footer{
-  background:var(--ink);
+  position:relative;
+  z-index:2;
+  background:var(--night);
   color:rgba(255,248,240,0.6);
-  padding:28px 0;
-  border-top:1px solid rgba(255,248,240,0.12);
+  padding:26px 0;
+  border-top:1px solid rgba(255,248,240,0.1);
 }
 .footer-inner{
   display:flex;
   justify-content:space-between;
   align-items:center;
   flex-wrap:wrap;
-  gap:14px;
+  gap:12px;
   font-size:13px;
 }
-.footer a:hover{color:var(--sun);}
-
-/* fade-in on scroll */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease, transform 0.7s ease;}
-.reveal.visible{opacity:1;transform:translateY(0);}
+.footer a:hover{color:var(--yellow);}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="/" aria-label="Luanne Trotta — página inicial"><img src="/convite/logo.png" alt="Luanne Trotta Repórter" class="nav-logo"></a>
-    <a href="/" class="nav-back">Conheça a Luanne</a>
-  </div>
-</nav>
+<div class="confetti" id="confetti" aria-hidden="true"></div>
 
 <!-- HERO -->
 <header class="hero">
-  <div class="glow glow-1"></div>
-  <div class="glow glow-2"></div>
-  <div class="glow glow-3"></div>
-  <div class="container hero-grid">
-    <div>
-      <span class="eyebrow"><span class="live-dot"></span> CONVITE ESPECIAL</span>
-      <h1>Festa dos <span class="num">300 MIL</span> e você vai de <em>Carreta Furacão</em>.</h1>
-      <p class="hero-sub">Chegamos a 300 mil e quem fez isso acontecer foi você. Em parceria com a <strong>Carreta Furacão</strong>, vou levar <strong>30 seguidores</strong> pra comemorar comigo. Faz sua inscrição e boa sorte!</p>
-      <a href="#inscricao" class="btn-primary">Quero minha vaga →</a>
+  <div class="container">
+    <div class="top-bar">
+      <img src="/convite/logo.png" alt="Luanne Trotta Repórter" class="top-logo">
+      <span class="handle">@luannetrotta</span>
     </div>
-    <div class="hero-visual">
-      <div class="float-badge badge-vagas"><b>30</b> vagas</div>
-      <div class="ticket-photo">
-        <img src="/convite/luanne.jpg" alt="Luanne Trotta">
+
+    <div class="hero-grid">
+      <div>
+        <span class="tag"><span class="spark">✦</span> Convite exclusivo</span>
+        <h1>Festa dos <span class="big">300 mil</span>de <span class="neon">Carreta Furacão</span></h1>
+        <p class="hero-sub">Você foi convidado(a) pra comemorar comigo os <strong>300 mil seguidores</strong>! Em parceria com a <strong>Carreta Furacão</strong>, a gente vai junto pra festa. Confirma aqui se você vai na carreta.</p>
+        <a href="#confirmar" class="btn-party">Confirmar presença 🎉</a>
       </div>
-      <div class="float-badge badge-carreta">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1.5" y="6" width="13" height="10" rx="1.5"/><path d="M14.5 9.5h4l3 3.5v3h-7z"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/></svg>
-        Carreta Furacão
+
+      <div class="ticket">
+        <div class="ticket-photo">
+          <img src="/convite/luanne.jpg" alt="Luanne Trotta">
+          <span class="ticket-stamp">VIP</span>
+        </div>
+        <div class="ticket-cut"></div>
+        <div class="ticket-body">
+          <p class="ticket-title">Festa dos 300 Mil</p>
+          <div class="ticket-row">
+            <span>Data<b>Qua, 21/10</b></span>
+            <span>Saída<b>20h</b></span>
+            <span>Embarque<b>Pç. das Corujas</b></span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </header>
 
-<!-- MARQUEE -->
-<div class="marquee-strip" aria-hidden="true">
-  <div class="marquee-track">
-    <span>#FESTADOS300MIL <span class="dot">●</span></span>
-    <span>#CARRETAFURACÃO <span class="dot">●</span></span>
-    <span>#LUANNETROTTA <span class="dot">●</span></span>
-    <span>#30SELECIONADOS <span class="dot">●</span></span>
-    <span>#FESTADOS300MIL <span class="dot">●</span></span>
-    <span>#CARRETAFURACÃO <span class="dot">●</span></span>
-    <span>#LUANNETROTTA <span class="dot">●</span></span>
-    <span>#30SELECIONADOS <span class="dot">●</span></span>
+<!-- COUNTDOWN -->
+<div class="countdown-strip">
+  <p class="countdown-label">A carreta sai em</p>
+  <div class="countdown" id="countdown">
+    <div class="cd-box"><b id="cd-d">--</b><span>dias</span></div>
+    <div class="cd-box"><b id="cd-h">--</b><span>horas</span></div>
+    <div class="cd-box"><b id="cd-m">--</b><span>min</span></div>
+    <div class="cd-box"><b id="cd-s">--</b><span>seg</span></div>
   </div>
 </div>
 
 <!-- INFO -->
-<section class="section info" id="info">
+<section class="section" id="info">
   <div class="container">
-    <span class="section-label">Anota aí</span>
-    <h2>Tudo que você precisa saber pra embarcar.</h2>
-    <p class="section-intro">A festa é fechada, só pra convidados. Os 30 selecionados saem juntos da Praça das Corujas e a Carreta Furacão leva todo mundo direto pra festa.</p>
+    <span class="section-label">✦ Anota aí</span>
+    <h2>Como vai ser o rolê</h2>
+    <p class="section-intro">A festa é fechada, só pra convidados. Quem vai de carreta se encontra na Praça das Corujas e a Carreta Furacão leva todo mundo direto pra festa.</p>
 
     <div class="info-grid">
-      <div class="info-card c1 reveal">
-        <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.3"/></svg></div>
+      <div class="info-card" style="--c:var(--pink);">
+        <div class="info-emoji">📍</div>
         <p class="k">Embarque</p>
         <p class="v">Praça das Corujas</p>
       </div>
-      <div class="info-card c2 reveal">
-        <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+      <div class="info-card" style="--c:var(--yellow);">
+        <div class="info-emoji">⏰</div>
         <p class="k">Saída</p>
         <p class="v">20h em ponto</p>
       </div>
-      <div class="info-card c3 reveal">
-        <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div>
+      <div class="info-card" style="--c:var(--cyan);">
+        <div class="info-emoji">📅</div>
         <p class="k">Quando</p>
         <p class="v">Quarta, 21/10</p>
       </div>
-      <div class="info-card c4 reveal">
-        <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20v-1.5a3.5 3.5 0 0 0-3.5-3.5h-5A3.5 3.5 0 0 0 4 18.5V20"/><circle cx="10" cy="8" r="3.5"/><path d="M20 20v-1.5a3.5 3.5 0 0 0-2.5-3.3M15.5 4.7a3.5 3.5 0 0 1 0 6.6"/></svg></div>
-        <p class="k">Vagas</p>
-        <p class="v">30 seguidores</p>
+      <div class="info-card" style="--c:var(--violet);">
+        <div class="info-emoji">🚚</div>
+        <p class="k">Carreta</p>
+        <p class="v">30 lugares</p>
       </div>
+    </div>
+
+    <div class="notes">
+      <p class="note"><span>✅</span><span>Confirme abaixo se você vai de carreta ou por conta própria. Assim a gente sabe exatamente quem embarca.</span></p>
+      <p class="note"><span>⏱️</span><span>Chegue antes das 20h na Praça das Corujas. A carreta sai no horário!</span></p>
+      <p class="note"><span>🤫</span><span>O convite é pessoal. Não compartilhe este link.</span></p>
     </div>
   </div>
 </section>
 
-<!-- COMO FUNCIONA -->
-<section class="section" id="como-funciona">
-  <div class="container">
-    <span class="section-label">Como funciona</span>
-    <h2>Três passos pra entrar na carreta.</h2>
-
-    <div class="steps">
-      <div class="step reveal">
-        <div class="step-num">01</div>
-        <h3>Faça sua inscrição</h3>
-        <p>Preencha o formulário aqui embaixo com seus dados e o seu @ do Instagram. É uma inscrição por pessoa.</p>
-      </div>
-      <div class="step reveal">
-        <div class="step-num">02</div>
-        <h3>Fique de olho no WhatsApp</h3>
-        <p>Os 30 selecionados recebem a confirmação pelo WhatsApp informado. Deixa o celular por perto!</p>
-      </div>
-      <div class="step reveal">
-        <div class="step-num">03</div>
-        <h3>Embarque com a gente</h3>
-        <p>Chegue com antecedência na Praça das Corujas, com documento com foto. A carreta sai às 20h, pontualmente.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- INSCRIÇÃO -->
-<section class="section signup" id="inscricao">
-  <div class="container signup-grid">
-    <div class="reveal">
-      <span class="section-label">Inscrição</span>
-      <h2>Garanta sua chance de ir pra festa.</h2>
-      <p class="section-intro">São só 30 vagas, então capricha no motivo: ele conta na hora da escolha.</p>
-      <ul class="rules">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12 9 17 20 6"/></svg> Ter 18 anos ou mais</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12 9 17 20 6"/></svg> Seguir o <a href="https://instagram.com/luannetrotta" target="_blank" rel="noopener" style="color:var(--sun);font-weight:700;">@luannetrotta</a> no Instagram</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12 9 17 20 6"/></svg> Levar documento com foto no embarque</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12 9 17 20 6"/></svg> Estar na Praça das Corujas antes das 20h</li>
-      </ul>
+<!-- CONFIRMAÇÃO -->
+<section class="section rsvp" id="confirmar">
+  <div class="container rsvp-grid">
+    <div>
+      <span class="section-label">✦ RSVP</span>
+      <h2>Confirme sua presença</h2>
+      <p class="section-intro">Leva menos de um minuto. A carreta tem 30 lugares: quando lotar, ainda dá pra confirmar indo por conta própria.</p>
     </div>
 
-    <div class="form-card reveal">
-      <form id="signupForm" novalidate>
-        <p class="form-title">Minha inscrição</p>
+    <div class="form-card">
+      <form id="rsvpForm" novalidate>
+        <p class="form-title">Meu convite 🎟️</p>
         <div class="form-error" id="formError" role="alert"></div>
         <div class="form-row">
           <label for="nome">Nome completo</label>
@@ -701,33 +674,35 @@ a{color:inherit;text-decoration:none;}
           <label for="whatsapp">WhatsApp</label>
           <input type="tel" id="whatsapp" name="whatsapp" autocomplete="tel" inputmode="tel" placeholder="(00) 00000-0000" maxlength="20" required>
         </div>
-        <div class="form-cols">
-          <div class="form-row">
-            <label for="cidade">Cidade</label>
-            <input type="text" id="cidade" name="cidade" autocomplete="address-level2" maxlength="80" required>
-          </div>
-          <div class="form-row">
-            <label for="idade">Idade</label>
-            <input type="number" id="idade" name="idade" inputmode="numeric" min="18" max="120" required>
-          </div>
-        </div>
         <div class="form-row">
-          <label for="motivo">Por que você merece ir? <span class="opt">(opcional)</span></label>
-          <textarea id="motivo" name="motivo" maxlength="600" placeholder="Conta pra Luanne em poucas palavras..."></textarea>
+          <label for="cidade">Cidade</label>
+          <input type="text" id="cidade" name="cidade" autocomplete="address-level2" maxlength="80" required>
         </div>
-        <label class="check-row">
-          <input type="checkbox" id="aceite" name="aceite" required>
-          <span>Tenho 18 anos ou mais, sigo o @luannetrotta e concordo com as regras desta ação.</span>
-        </label>
-        <button type="submit" class="form-submit" id="submitBtn">Quero entrar na carreta →</button>
-        <p class="form-note">Seus dados são usados só para a seleção e o contato desta ação.</p>
+        <fieldset>
+          <legend class="form-legend">Como você vai pra festa?</legend>
+          <div class="choice-grid">
+            <label class="choice">
+              <input type="radio" name="transporte" value="carreta" id="opt-carreta">
+              <span class="choice-box"><span class="e">🚚</span><b>Vou de Carreta Furacão</b><small>Embarque 20h na Praça das Corujas</small></span>
+            </label>
+            <label class="choice alt">
+              <input type="radio" name="transporte" value="proprio" id="opt-proprio">
+              <span class="choice-box"><span class="e">🚗</span><b>Vou por conta própria</b><small>Não preciso de lugar na carreta</small></span>
+            </label>
+          </div>
+        </fieldset>
+        <div class="form-row">
+          <label for="observacao">Recado pra Luanne <span class="opt">(opcional)</span></label>
+          <textarea id="observacao" name="observacao" maxlength="600" placeholder="Algum aviso ou só um recado carinhoso..."></textarea>
+        </div>
+        <button type="submit" class="form-submit" id="submitBtn">Confirmar presença 🎉</button>
+        <p class="form-note">Seus dados são usados só para a organização da festa.</p>
       </form>
 
       <div class="success" id="success" role="status">
-        <div class="success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12 9 17 20 6"/></svg></div>
-        <h3>Inscrição feita!</h3>
-        <p>Agora é torcer. Se você for um dos 30 selecionados, a gente te chama no WhatsApp.</p>
-        <p>Embarque: <strong>Praça das Corujas, 20h</strong>.</p>
+        <div class="success-emoji" id="successEmoji">🎉</div>
+        <h3 id="successTitle">Presença confirmada!</h3>
+        <p id="successText"></p>
         <a href="https://instagram.com/luannetrotta" target="_blank" rel="noopener" class="btn-ig">Acompanhar no @luannetrotta</a>
       </div>
     </div>
@@ -737,29 +712,56 @@ a{color:inherit;text-decoration:none;}
 <!-- FOOTER -->
 <footer class="footer">
   <div class="container footer-inner">
-    <span>© 2026 Luanne Trotta × Carreta Furacão</span>
+    <span>Luanne Trotta × Carreta Furacão · Festa dos 300 Mil</span>
     <a href="https://instagram.com/luannetrotta" target="_blank" rel="noopener">@luannetrotta</a>
   </div>
 </footer>
 
 <script>
-// Reveal on scroll
-const revealEls = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12 });
-revealEls.forEach(el => observer.observe(el));
+// Confetti
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const box = document.getElementById('confetti');
+  const colors = ['#FF3DA5','#FFD23F','#2EE6D6','#FF7A2F','#8B5CF6','#FFF8F0'];
+  const n = window.innerWidth < 600 ? 26 : 46;
+  for(let i = 0; i < n; i++){
+    const c = document.createElement('i');
+    c.style.left = Math.random() * 100 + 'vw';
+    c.style.background = colors[i % colors.length];
+    c.style.setProperty('--drift', (Math.random() * 120 - 60) + 'px');
+    c.style.animationDuration = (7 + Math.random() * 8) + 's';
+    c.style.animationDelay = (-Math.random() * 15) + 's';
+    if(i % 3 === 0){ c.style.width = '8px'; c.style.height = '8px'; c.style.borderRadius = '50%'; }
+    box.appendChild(c);
+  }
+})();
 
-// Inscrição -> Supabase (chave pública; a tabela só aceita insert, sem leitura)
+// Contagem regressiva até a saída da carreta (quarta, 21/10, 20h, horário de Brasília)
+(function(){
+  const saida = new Date('2026-10-21T20:00:00-03:00').getTime();
+  const el = id => document.getElementById(id);
+  const pad = v => String(v).padStart(2, '0');
+  function tick(){
+    const diff = saida - Date.now();
+    if(diff <= 0){
+      document.getElementById('countdown').innerHTML = '<p class="countdown-done">A carreta já saiu! 🚚💨</p>';
+      return;
+    }
+    const s = Math.floor(diff / 1000);
+    el('cd-d').textContent = pad(Math.floor(s / 86400));
+    el('cd-h').textContent = pad(Math.floor(s % 86400 / 3600));
+    el('cd-m').textContent = pad(Math.floor(s % 3600 / 60));
+    el('cd-s').textContent = pad(s % 60);
+    setTimeout(tick, 1000);
+  }
+  tick();
+})();
+
+// Confirmação -> Supabase (chave pública; a tabela só aceita insert, sem leitura)
 const SUPABASE_URL = 'https://jrvmjokalrqojuilepkb.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_jdqabUL5E4afOVSfr-7gbA_2qdcxyMs';
 
-const form = document.getElementById('signupForm');
+const form = document.getElementById('rsvpForm');
 const errorBox = document.getElementById('formError');
 const submitBtn = document.getElementById('submitBtn');
 
@@ -783,17 +785,16 @@ form.addEventListener('submit', async function(e){
   const instagram = normalizeInstagram(document.getElementById('instagram').value);
   const whatsapp = document.getElementById('whatsapp').value.replace(/\D/g, '');
   const cidade = document.getElementById('cidade').value.trim();
-  const idade = parseInt(document.getElementById('idade').value, 10);
-  const motivo = document.getElementById('motivo').value.trim();
-  const aceite = document.getElementById('aceite').checked;
+  const transporte = (form.querySelector('input[name=transporte]:checked') || {}).value;
+  const observacao = document.getElementById('observacao').value.trim();
 
   if(nome.length < 2) return showError('Preencha seu nome completo.');
   if(!/^[a-z0-9._]{1,30}$/.test(instagram)) return showError('Confira seu @ do Instagram (só letras, números, ponto e underline).');
   if(whatsapp.length < 10 || whatsapp.length > 13) return showError('Confira seu WhatsApp com DDD.');
   if(cidade.length < 2) return showError('Preencha sua cidade.');
-  if(!idade || idade < 18 || idade > 120) return showError('A ação é só para maiores de 18 anos.');
-  if(!aceite) return showError('Marque que você concorda com as regras pra continuar.');
+  if(!transporte) return showError('Escolha se você vai de Carreta Furacão ou por conta própria.');
 
+  const vaiDeCarreta = transporte === 'carreta';
   submitBtn.disabled = true;
   submitBtn.textContent = 'Enviando...';
 
@@ -806,25 +807,39 @@ form.addEventListener('submit', async function(e){
         'Prefer':'return=minimal'
       },
       body:JSON.stringify({
-        nome, instagram, whatsapp, cidade, idade,
-        motivo: motivo || null,
-        aceite_regras: true
+        nome, instagram, whatsapp, cidade,
+        vai_de_carreta: vaiDeCarreta,
+        observacao: observacao || null
       })
     });
 
     if(res.status === 409){
-      throw new Error('Esse @ já está inscrito. É só uma inscrição por pessoa. Boa sorte!');
+      throw new Error('Esse @ já confirmou presença. Se precisar mudar algo, fala direto com a equipe da Luanne.');
     }
     if(!res.ok){
+      const body = await res.json().catch(() => ({}));
+      if(body.message === 'carreta_lotada'){
+        document.getElementById('opt-proprio').checked = true;
+        throw new Error('Poxa, os 30 lugares da carreta já foram preenchidos! Você ainda pode confirmar presença indo por conta própria: já marquei essa opção, é só enviar de novo.');
+      }
       throw new Error('Não conseguimos enviar agora. Tenta de novo em instantes.');
     }
 
+    if(vaiDeCarreta){
+      document.getElementById('successEmoji').textContent = '🚚';
+      document.getElementById('successTitle').textContent = 'Lugar na carreta garantido!';
+      document.getElementById('successText').innerHTML = 'Te espero na <strong>Praça das Corujas</strong> na <strong>quarta, 21/10</strong>. A carreta sai às <strong>20h em ponto</strong>, chega antes!';
+    }else{
+      document.getElementById('successEmoji').textContent = '🎉';
+      document.getElementById('successTitle').textContent = 'Presença confirmada!';
+      document.getElementById('successText').textContent = 'Anotado: você vai por conta própria. Nos vemos na festa!';
+    }
     form.style.display = 'none';
     document.getElementById('success').classList.add('show');
   }catch(err){
     showError(err.message && !/fetch/i.test(err.message) ? err.message : 'Sem conexão. Confere sua internet e tenta de novo.');
     submitBtn.disabled = false;
-    submitBtn.textContent = 'Quero entrar na carreta →';
+    submitBtn.textContent = 'Confirmar presença 🎉';
   }
 });
 </script>
