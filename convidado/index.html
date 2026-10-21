@@ -192,23 +192,34 @@ button{font:inherit;color:inherit;}
 }
 
 .hero-facts{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin:24px 0 18px;
+  display:grid;
+  grid-template-columns:repeat(3, auto);
+  justify-content:start;
+  margin:24px 0 20px;
+  max-width:470px;
+  border-radius:20px;
+  background:rgba(255,248,240,0.07);
+  border:1.5px solid rgba(255,248,240,0.18);
+  overflow:hidden;
 }
 .fact{
-  display:inline-flex;
-  align-items:center;
-  gap:9px;
-  padding:9px 15px 9px 12px;
-  border-radius:100px;
-  background:rgba(255,248,240,0.08);
-  border:1.5px solid rgba(255,248,240,0.2);
-  font-weight:700;
-  font-size:15px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:2px;
+  padding:13px 20px 14px 16px;
+  border-left:1.5px dashed rgba(255,248,240,0.2);
 }
-.fact .icon{font-size:18px;color:var(--yellow);}
+.fact:first-child{border-left:0;}
+.fact .icon{font-size:20px;color:var(--yellow);margin-bottom:5px;}
+.fact span{
+  font-family:var(--font-board);
+  font-size:10.5px;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:rgba(255,248,240,0.55);
+}
+.fact b{font-size:17px;font-weight:800;line-height:1.2;white-space:nowrap;}
 
 .hero-sub{
   font-size:18px;
@@ -323,15 +334,35 @@ button{font:inherit;color:inherit;}
   .top-bar{margin-bottom:28px;}
   .hero-grid{grid-template-columns:1fr;gap:46px;}
   .hero-text{text-align:center;}
-  .hero-facts,.hero-actions{justify-content:center;}
+  .hero-facts{margin-left:auto;margin-right:auto;}
+  .hero-actions{justify-content:center;}
   .hero-sub{margin-left:auto;margin-right:auto;}
   .ticket{max-width:290px;}
   .ticket-body{padding:14px 18px 18px;}
   .ticket-row{gap:8px;font-size:10.5px;}
   .ticket-row b{font-size:13.5px;}
 }
-@media (max-width:380px){
-  .btn-party,.btn-ghost{width:100%;justify-content:center;}
+.lbl-short{display:none;}
+@media (max-width:600px){
+  .hero{padding:18px 0 52px;}
+  .top-bar{margin-bottom:22px;}
+  .hero-grid{gap:38px;}
+  .hero-facts{grid-template-columns:repeat(3, 1fr);margin:20px auto 18px;}
+  .fact{align-items:center;padding:12px 6px 13px;}
+  .fact b{font-size:15.5px;}
+  .hero-sub{font-size:16.5px;margin-bottom:22px;}
+  .hero-actions{display:grid;grid-template-columns:1.3fr 1fr;gap:10px;max-width:420px;margin:0 auto;}
+  .btn-party,.btn-ghost{justify-content:center;padding:15px 10px;font-size:16px;}
+  .lbl-long{display:none;}
+  .lbl-short{display:inline;}
+  .ticket{max-width:250px;}
+  .ticket-photo{aspect-ratio:4/3.9;}
+  .ticket-row{display:none;}
+  .ticket-title{margin-bottom:2px;}
+}
+@media (max-width:350px){
+  .hero-actions{grid-template-columns:1fr;}
+  .fact span{font-size:9.5px;letter-spacing:0.08em;}
 }
 
 /* ===== FAIXA ===== */
@@ -374,6 +405,10 @@ button{font:inherit;color:inherit;}
 
 /* ===== SECTIONS ===== */
 .section{padding:76px 0;position:relative;z-index:2;}
+@media (max-width:600px){
+  .section{padding:52px 0;}
+  .section h2{margin-bottom:10px;}
+}
 .section-label{
   display:inline-block;
   font-family:var(--font-script);
@@ -528,7 +563,22 @@ button{font:inherit;color:inherit;}
   text-transform:uppercase;
   color:rgba(23,19,17,0.45);
 }
-@media (max-width:860px){.menu-grid{grid-template-columns:1fr;gap:16px;}}
+@media (max-width:860px){
+  .menu-grid{grid-template-columns:1fr;gap:12px;margin-top:22px;}
+  .menu-card{
+    display:grid;
+    grid-template-columns:54px 1fr;
+    grid-template-rows:auto auto;
+    column-gap:16px;
+    align-items:center;
+    padding:16px 18px;
+    box-shadow:0 5px 0 -1px var(--c);
+  }
+  .menu-icon{grid-row:1 / 3;width:54px;height:54px;margin:0;border-radius:16px;}
+  .menu-icon .icon{font-size:27px;}
+  .menu-card h3{font-size:17px;margin:0 0 3px;align-self:end;}
+  .menu-card p{font-size:15px;line-height:1.45;align-self:start;}
+}
 
 /* ===== PROGRAMAÇÃO ===== */
 .agenda{
@@ -723,7 +773,7 @@ button{font:inherit;color:inherit;}
 
 @media (max-width:860px){
   .place-layout{grid-template-columns:1fr;}
-  .map-frame{min-height:300px;order:-1;}
+  .map-frame{min-height:260px;order:-1;}
 }
 
 /* ===== BARRA FIXA DE LOCALIZAÇÃO ===== */
@@ -863,14 +913,14 @@ button{font:inherit;color:inherit;}
         <span class="script-line">Bora comemorar comigo!</span>
         <h1>Festa dos <span class="big">300 mil</span></h1>
         <div class="hero-facts">
-          <span class="fact"><svg class="icon"><use href="#i-cal"/></svg> Quarta, 21/10</span>
-          <span class="fact"><svg class="icon"><use href="#i-clock"/></svg> A partir das 14h</span>
-          <span class="fact"><svg class="icon"><use href="#i-pin"/></svg> Meu Cafofo</span>
+          <div class="fact"><svg class="icon"><use href="#i-cal"/></svg><span>Quarta</span><b>21/10</b></div>
+          <div class="fact"><svg class="icon"><use href="#i-clock"/></svg><span>A partir das</span><b>14h</b></div>
+          <div class="fact"><svg class="icon"><use href="#i-pin"/></svg><span>Local</span><b>Meu Cafofo</b></div>
         </div>
         <p class="hero-sub">Chegamos a <strong>300 mil</strong> e eu quero você comigo nesse dia. Vai ter churrasco, bebida e um passeio de <strong>Carreta Furacão</strong> às 19h.</p>
         <div class="hero-actions">
           <a href="#local" class="btn-party">Como chegar <svg class="icon"><use href="#i-arrow"/></svg></a>
-          <button type="button" class="btn-ghost" id="calBtn"><svg class="icon"><use href="#i-cal-add"/></svg> Salvar na agenda</button>
+          <button type="button" class="btn-ghost" id="calBtn"><svg class="icon"><use href="#i-cal-add"/></svg> <span class="lbl-long">Salvar na agenda</span><span class="lbl-short">Agenda</span></button>
         </div>
       </div>
 

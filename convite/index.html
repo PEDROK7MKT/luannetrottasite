@@ -1029,6 +1029,71 @@ a{color:inherit;text-decoration:none;}
 }
 .footer a{display:inline-flex;align-items:center;gap:8px;}
 .footer a:hover{color:var(--yellow);}
+
+/* ===== BARRA FIXA DE VAGAS ===== */
+.cta-dock{
+  position:fixed;
+  left:0;right:0;
+  bottom:0;
+  z-index:40;
+  padding:10px 12px calc(10px + env(safe-area-inset-bottom));
+  background:rgba(14,6,24,0.94);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  border-top:1.5px solid rgba(255,248,240,0.14);
+  transform:translateY(110%);
+  visibility:hidden;
+  transition:transform 0.3s ease, visibility 0s linear 0.3s;
+}
+.cta-dock.show{transform:translateY(0);visibility:visible;transition:transform 0.3s ease;}
+.cta-dock-inner{
+  max-width:720px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+.cta-dock-text{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  font-weight:800;
+  font-size:15px;
+  color:var(--yellow);
+  min-width:0;
+}
+.cta-dock-text span:last-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.cta-dock-go{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:13px 18px;
+  border-radius:100px;
+  background:var(--yellow);
+  color:var(--ink);
+  font-weight:800;
+  font-size:15px;
+  border:2px solid var(--ink);
+  white-space:nowrap;
+  flex-shrink:0;
+}
+.cta-dock-go .icon{font-size:18px;stroke-width:2.6;}
+
+@media (max-width:600px){
+  .section{padding:52px 0;}
+  .section h2{margin-bottom:10px;}
+  .invite .ticket{max-width:250px;}
+  .invite .ticket-photo{aspect-ratio:4/3.9;}
+  .rule{padding:13px 0;grid-template-columns:48px 1fr;gap:12px;}
+  .rule-num{font-size:26px;}
+  .rule h3{font-size:17px;}
+  .rule p{font-size:15px;}
+}
+@media (max-width:350px){
+  .cta-dock-text{font-size:13.5px;}
+  .cta-dock-go{padding:12px 14px;font-size:14px;}
+}
 </style>
 </head>
 <body>
@@ -1262,6 +1327,14 @@ a{color:inherit;text-decoration:none;}
   </div>
 </section>
 
+<!-- BARRA FIXA DE VAGAS -->
+<div class="cta-dock" id="ctaDock">
+  <div class="cta-dock-inner">
+    <span class="cta-dock-text"><span class="live-dot"></span><span data-vagas-text>Carregando vagas...</span></span>
+    <a href="#confirmar" class="cta-dock-go">Garantir vaga <svg class="icon"><use href="#i-arrow"/></svg></a>
+  </div>
+</div>
+
 <!-- FOOTER -->
 <footer class="footer">
   <div class="container footer-inner">
@@ -1348,6 +1421,7 @@ function encerrarConfirmacoes(){
   soldout.querySelector('h3').textContent = 'A carreta já saiu';
   soldout.querySelector('p').textContent = 'A Carreta Furacão já saiu da Praça das Corujas. Obrigada pelo carinho, nos vemos nas próximas!';
   soldout.classList.add('show');
+  atualizarBarra();
 }
 
 function renderVagas(n){
@@ -1366,6 +1440,7 @@ function renderVagas(n){
   if(confirmado) return;
   formWrap.style.display = n === 0 ? 'none' : '';
   soldout.classList.toggle('show', n === 0);
+  if(typeof atualizarBarra === 'function') atualizarBarra();
 }
 
 async function carregarVagas(){
@@ -1382,6 +1457,17 @@ async function carregarVagas(){
 }
 carregarVagas();
 setInterval(carregarVagas, 20000);
+
+const ctaDock = document.getElementById('ctaDock');
+let heroCtaVisivel = true, formVisivel = false;
+function atualizarBarra(){
+  const aberto = !confirmado && !encerrado && !soldout.classList.contains('show');
+  ctaDock.classList.toggle('show', aberto && !heroCtaVisivel && !formVisivel);
+}
+if('IntersectionObserver' in window){
+  new IntersectionObserver(e => { heroCtaVisivel = e[0].isIntersecting; atualizarBarra(); }).observe(document.querySelector('.hero .btn-party'));
+  new IntersectionObserver(e => { formVisivel = e[0].isIntersecting; atualizarBarra(); }, { rootMargin:'0px 0px -35% 0px' }).observe(document.getElementById('confirmar'));
+}
 
 function confettiBurst(){
   if(reducedMotion) return;
@@ -1421,6 +1507,7 @@ function showSuccess(numero, nome, instagram){
   confirmado = true;
   formWrap.style.display = 'none';
   soldout.classList.remove('show');
+  atualizarBarra();
   document.getElementById('passNum').textContent = String(numero).padStart(2, '0');
   document.getElementById('passName').textContent = nome;
   document.getElementById('passIg').textContent = '@' + instagram;
