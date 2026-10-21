@@ -543,7 +543,7 @@ a{color:inherit;text-decoration:none;}
 }
 
 @media (max-width:860px){
-  .board-body{grid-template-columns:1fr;}
+  .board-body{grid-template-columns:minmax(0,1fr);}
   .board-count{border-right:0;border-bottom:2px solid #2A1F38;align-items:center;padding:22px 16px;}
   .board-row{grid-template-columns:118px 1fr;padding:14px 16px;gap:10px;}
   .board-row .v{font-size:16px;}
@@ -1090,8 +1090,11 @@ a{color:inherit;text-decoration:none;}
   .rule h3{font-size:17px;}
   .rule p{font-size:15px;}
 }
+@media (max-width:400px){
+  .cta-dock-go .icon{display:none;}
+}
 @media (max-width:350px){
-  .cta-dock-text{font-size:13.5px;}
+  .cta-dock-text{font-size:13px;}
   .cta-dock-go{padding:12px 14px;font-size:14px;}
 }
 </style>
@@ -1121,7 +1124,7 @@ a{color:inherit;text-decoration:none;}
   <div class="container">
     <div class="top-bar">
       <img src="/convite/logo.png" alt="Luanne Trotta Repórter" class="top-logo">
-      <span class="host-chip"><img src="/convite/avatar.jpg" alt=""> @luannetrotta</span>
+      <span class="host-chip"><img src="/convite/avatar-96.jpg" alt="" width="28" height="28"> @luannetrotta</span>
     </div>
 
     <div class="hero-grid">
