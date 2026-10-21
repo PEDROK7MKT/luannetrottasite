@@ -1080,6 +1080,10 @@ a{color:inherit;text-decoration:none;}
 }
 .cta-dock-go .icon{font-size:18px;stroke-width:2.6;}
 
+/* ===== ESGOTADO / ENCERRADO ===== */
+body.esgotado .hero .btn-party{background:#3A2D4D;color:#D3C8E0;box-shadow:0 6px 0 #1B1326;pointer-events:none}
+body.esgotado .sticker polygon{fill:#8E8399}
+
 @media (max-width:600px){
   .section{padding:52px 0;}
   .section h2{margin-bottom:10px;}
@@ -1414,10 +1418,31 @@ const bar = document.getElementById('vagasBar');
 let confirmado = false;
 let encerrado = false;
 
+// Topo e título do formulário acompanham o estado: esgotado/encerrado ou aberto
+const heroBtn = document.querySelector('.hero .btn-party');
+const stickerEl = document.querySelector('.sticker-text');
+const rsvpTitulo = document.querySelector('#confirmar h2');
+const rsvpIntro = document.querySelector('#confirmar .section-intro');
+const ORIG = { btn: heroBtn.innerHTML, sticker: stickerEl.innerHTML, titulo: rsvpTitulo.textContent, intro: rsvpIntro.textContent };
+function modoLotado(fechado, motivo){
+  document.body.classList.toggle('esgotado', fechado);
+  if(!fechado){
+    heroBtn.innerHTML = ORIG.btn; stickerEl.innerHTML = ORIG.sticker;
+    rsvpTitulo.textContent = ORIG.titulo; rsvpIntro.textContent = ORIG.intro;
+    return;
+  }
+  const saiu = motivo === 'saiu';
+  heroBtn.innerHTML = '<svg class="icon"><use href="#i-lock"/></svg> ' + (saiu ? 'Confirmações encerradas' : 'Vagas esgotadas');
+  stickerEl.innerHTML = saiu ? '<small>Carreta</small><b>já</b><small>saiu</small>' : '<small>Todas as</small><b>30</b><small>ocupadas</small>';
+  rsvpTitulo.textContent = saiu ? 'A carreta já saiu' : 'Lista fechada';
+  rsvpIntro.textContent = saiu ? 'A Carreta Furacão já saiu da Praça das Corujas.' : 'Os 30 lugares da carreta foram preenchidos.';
+}
+
 for(let i = 0; i < TOTAL_VAGAS; i++) bar.appendChild(document.createElement('i'));
 
 function encerrarConfirmacoes(){
   encerrado = true;
+  modoLotado(true, 'saiu');
   document.querySelectorAll('[data-vagas-text]').forEach(el => { el.textContent = 'A carreta já saiu'; });
   if(confirmado) return;
   formWrap.style.display = 'none';
@@ -1440,6 +1465,7 @@ function renderVagas(n){
     el.textContent = n === 0 ? 'Lotada' : n + (n === 1 ? ' livre' : ' livres') + ' de ' + TOTAL_VAGAS;
   });
   bar.querySelectorAll('i').forEach((el, i) => el.classList.toggle('on', i < TOTAL_VAGAS - n));
+  modoLotado(n === 0);
   if(confirmado) return;
   formWrap.style.display = n === 0 ? 'none' : '';
   soldout.classList.toggle('show', n === 0);
