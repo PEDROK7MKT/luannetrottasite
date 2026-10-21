@@ -971,21 +971,25 @@ a{color:inherit;text-decoration:none;}
   margin-top:6px;
   color:rgba(23,19,17,0.6);
 }
+.pass-hints{
+  display:grid;
+  gap:8px;
+  margin-top:18px;
+}
 .pass-hint{
   display:flex;
   align-items:center;
-  justify-content:center;
-  gap:8px;
+  gap:10px;
   font-size:14.5px;
-  font-weight:600;
-  color:rgba(23,19,17,0.75);
+  font-weight:500;
+  line-height:1.4;
+  color:rgba(23,19,17,0.8);
   background:var(--paper);
   border-radius:12px;
-  padding:11px 12px;
-  margin-top:18px;
-  text-align:center;
+  padding:11px 14px;
 }
-.pass-hint .icon{font-size:18px;color:var(--pink);}
+.pass-hint b{font-weight:800;color:var(--ink);}
+.pass-hint .icon{font-size:20px;color:var(--pink);}
 .pass-actions{text-align:center;}
 
 /* explosão de confete na confirmação */
@@ -1037,6 +1041,7 @@ a{color:inherit;text-decoration:none;}
   <symbol id="i-bus" viewBox="0 0 24 24"><rect x="2" y="6" width="13.5" height="10" rx="1.6"/><path d="M15.5 9.5h3.6l2.9 3.3V16h-6.5z"/><circle cx="6.5" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/></symbol>
   <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/><path d="M12 14.5v2.5"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path d="M4.5 12.5l5 5 10-11"/></symbol>
+  <symbol id="i-id" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><circle cx="8.5" cy="11" r="2.2"/><path d="M5.3 16c.6-1.5 1.8-2.3 3.2-2.3s2.6.8 3.2 2.3M14.5 10h4M14.5 13.5h3"/></symbol>
   <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8h3l1.6-2.5h6.8L17 8h3a1.5 1.5 0 0 1 1.5 1.5v9A1.5 1.5 0 0 1 20 20H4a1.5 1.5 0 0 1-1.5-1.5v-9A1.5 1.5 0 0 1 4 8z"/><circle cx="12" cy="13.5" r="3.6"/></symbol>
   <symbol id="i-ig" viewBox="0 0 24 24"><rect x="2.8" y="2.8" width="18.4" height="18.4" rx="5.2"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.4" cy="6.6" r="0.7" fill="currentColor" stroke="none"/></symbol>
 </svg>
@@ -1155,8 +1160,8 @@ a{color:inherit;text-decoration:none;}
       <ol class="rules">
         <li class="rule"><span class="rule-num">01</span><div><h3>Confirme aqui</h3><p>A lista da carreta é por este formulário. Bateu 30, fechou.</p></div></li>
         <li class="rule"><span class="rule-num">02</span><div><h3>Chegue antes das 20h</h3><p>Ponto de encontro na Praça das Corujas. A carreta sai no horário.</p></div></li>
-        <li class="rule"><span class="rule-num">03</span><div><h3>Mostre seu ingresso</h3><p>Depois de confirmar você recebe um ingresso com seu número. Tira print e mostra no embarque.</p></div></li>
-        <li class="rule"><span class="rule-num">04</span><div><h3>Convite é pessoal</h3><p>Não repassa o link. Cada vaga tem nome.</p></div></li>
+        <li class="rule"><span class="rule-num">03</span><div><h3>Leve documento com foto</h3><p>No embarque a equipe confere seu nome na lista. Sem nome na lista, não sobe na carreta.</p></div></li>
+        <li class="rule"><span class="rule-num">04</span><div><h3>Uma vaga por pessoa</h3><p>Cada ingresso sai com nome e @. Precisou mudar algo, fala com a equipe da Luanne.</p></div></li>
       </ol>
     </div>
   </div>
@@ -1241,7 +1246,10 @@ a{color:inherit;text-decoration:none;}
           </div>
           <div class="barcode" id="barcode" aria-hidden="true"></div>
           <p class="barcode-id" id="barcodeId"></p>
-          <p class="pass-hint"><svg class="icon"><use href="#i-camera"/></svg> Tira um print e mostra no embarque</p>
+          <div class="pass-hints">
+            <p class="pass-hint"><svg class="icon"><use href="#i-id"/></svg> <span>No embarque vale o <b>nome na lista</b> + documento com foto</span></p>
+            <p class="pass-hint"><svg class="icon"><use href="#i-camera"/></svg> <span>Posta seu ingresso e marca a <b>@luannetrotta</b></span></p>
+          </div>
           <div class="pass-actions">
             <a href="https://instagram.com/luannetrotta" target="_blank" rel="noopener" class="btn-ig"><svg class="icon"><use href="#i-ig"/></svg> Acompanhar a @luannetrotta</a>
           </div>
