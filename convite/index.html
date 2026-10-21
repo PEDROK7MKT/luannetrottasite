@@ -556,6 +556,7 @@ a{color:inherit;text-decoration:none;}
 
 /* ===== CONVITE + REGRAS ===== */
 .invite{
+  overflow:hidden;
   background:
     radial-gradient(50% 50% at 0% 30%, rgba(255,61,165,0.16) 0%, transparent 70%),
     var(--night);
@@ -667,6 +668,7 @@ a{color:inherit;text-decoration:none;}
 
 /* ===== FORM ===== */
 .rsvp{
+  overflow:hidden;
   background:
     radial-gradient(50% 40% at 85% 10%, rgba(255,61,165,0.22) 0%, transparent 70%),
     radial-gradient(50% 40% at 10% 90%, rgba(46,230,214,0.16) 0%, transparent 70%),
@@ -961,7 +963,8 @@ a{color:inherit;text-decoration:none;}
   border-bottom:1px solid rgba(23,19,17,0.12);
 }
 .pass-grid b{display:block;font-size:16px;font-weight:800;margin-top:3px;}
-.barcode{display:flex;align-items:stretch;height:52px;gap:2px;}
+.barcode{display:flex;align-items:stretch;height:52px;gap:2px;max-width:100%;overflow:hidden;}
+.barcode i{flex-shrink:0;}
 .barcode i{background:var(--ink);border-radius:1px;}
 .barcode-id{
   font-family:var(--font-board);
@@ -1177,7 +1180,7 @@ a{color:inherit;text-decoration:none;}
       <div class="vagas-meter">
         <div class="vagas-meter-top">
           <span class="vagas-meter-num" data-vagas-num>--</span>
-          <span class="vagas-meter-label">vagas livres<br>de 30</span>
+          <span class="vagas-meter-label" data-vagas-label>vagas livres<br>de 30</span>
         </div>
         <div class="vagas-bar" id="vagasBar" aria-hidden="true"></div>
       </div>
@@ -1198,7 +1201,7 @@ a{color:inherit;text-decoration:none;}
           <p class="form-title">Seu nome na lista</p>
           <div class="form-error" id="formError" role="alert"></div>
           <div class="form-row">
-            <label for="nome">Nome completo</label>
+            <label for="nome">Nome completo <span class="opt">(como no documento)</span></label>
             <input type="text" id="nome" name="nome" autocomplete="name" maxlength="120" required>
           </div>
           <div class="form-row">
@@ -1308,6 +1311,7 @@ const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matc
     const diff = saida - Date.now();
     if(diff <= 0){
       document.getElementById('countdown').innerHTML = '<p class="board-gone">Carreta em rota</p>';
+      setTimeout(encerrarConfirmacoes, 0);
       return;
     }
     const s = Math.floor(diff / 1000);
@@ -1332,11 +1336,26 @@ const submitLabel = submitBtn.querySelector('span');
 const soldout = document.getElementById('soldout');
 const bar = document.getElementById('vagasBar');
 let confirmado = false;
+let encerrado = false;
 
 for(let i = 0; i < TOTAL_VAGAS; i++) bar.appendChild(document.createElement('i'));
 
+function encerrarConfirmacoes(){
+  encerrado = true;
+  document.querySelectorAll('[data-vagas-text]').forEach(el => { el.textContent = 'A carreta já saiu'; });
+  if(confirmado) return;
+  formWrap.style.display = 'none';
+  soldout.querySelector('h3').textContent = 'A carreta já saiu';
+  soldout.querySelector('p').textContent = 'A Carreta Furacão já saiu da Praça das Corujas. Obrigada pelo carinho, nos vemos nas próximas!';
+  soldout.classList.add('show');
+}
+
 function renderVagas(n){
+  if(encerrado) return;
   document.querySelectorAll('[data-vagas-num]').forEach(el => { el.textContent = n; });
+  document.querySelectorAll('[data-vagas-label]').forEach(el => {
+    el.innerHTML = (n === 1 ? 'vaga livre' : 'vagas livres') + '<br>de ' + TOTAL_VAGAS;
+  });
   document.querySelectorAll('[data-vagas-text]').forEach(el => {
     el.textContent = n === 0 ? 'Vagas esgotadas' : n === 1 ? 'Resta só 1 vaga' : 'Restam ' + n + ' de ' + TOTAL_VAGAS + ' vagas';
   });
@@ -1344,10 +1363,9 @@ function renderVagas(n){
     el.textContent = n === 0 ? 'Lotada' : n + (n === 1 ? ' livre' : ' livres') + ' de ' + TOTAL_VAGAS;
   });
   bar.querySelectorAll('i').forEach((el, i) => el.classList.toggle('on', i < TOTAL_VAGAS - n));
-  if(n === 0 && !confirmado){
-    formWrap.style.display = 'none';
-    soldout.classList.add('show');
-  }
+  if(confirmado) return;
+  formWrap.style.display = n === 0 ? 'none' : '';
+  soldout.classList.toggle('show', n === 0);
 }
 
 async function carregarVagas(){
@@ -1402,10 +1420,12 @@ function drawBarcode(seed){
 function showSuccess(numero, nome, instagram){
   confirmado = true;
   formWrap.style.display = 'none';
+  soldout.classList.remove('show');
   document.getElementById('passNum').textContent = String(numero).padStart(2, '0');
   document.getElementById('passName').textContent = nome;
   document.getElementById('passIg').textContent = '@' + instagram;
-  document.getElementById('barcodeId').textContent = 'CF300 · ' + drawBarcode(instagram) + ' · ' + String(numero).padStart(2, '0');
+  drawBarcode(instagram);
+  document.getElementById('barcodeId').textContent = '#FESTADOS300MIL · Nº ' + String(numero).padStart(2, '0');
   document.getElementById('success').classList.add('show');
   document.getElementById('formCard').scrollIntoView({behavior:'smooth', block:'start'});
   confettiBurst();
@@ -1419,13 +1439,14 @@ function showError(msg){
 
 function normalizeInstagram(v){
   v = v.trim().toLowerCase();
-  v = v.replace(/^https?:\/\/(www\.)?instagram\.com\//, '').split(/[/?#]/)[0];
+  v = v.replace(/^(https?:\/\/)?((www|m)\.)?instagram\.com\//, '').split(/[/?#]/)[0];
   return v.replace(/^@+/, '');
 }
 
 form.addEventListener('submit', async function(e){
   e.preventDefault();
   errorBox.classList.remove('show');
+  if(encerrado) return;
 
   const nome = document.getElementById('nome').value.trim().replace(/\s+/g, ' ');
   const instagram = normalizeInstagram(document.getElementById('instagram').value);
@@ -1433,7 +1454,7 @@ form.addEventListener('submit', async function(e){
   const cidade = document.getElementById('cidade').value.trim();
   const observacao = document.getElementById('observacao').value.trim();
 
-  if(nome.length < 2) return showError('Preencha seu nome completo.');
+  if(nome.length < 2 || !nome.includes(' ')) return showError('Coloca nome e sobrenome, igual ao documento.');
   if(!/^[a-z0-9._]{1,30}$/.test(instagram)) return showError('Confira seu @ do Instagram (só letras, números, ponto e underline).');
   if(whatsapp.length < 10 || whatsapp.length > 13) return showError('Confira seu WhatsApp com DDD.');
   if(cidade.length < 2) return showError('Preencha sua cidade.');
@@ -1470,7 +1491,7 @@ form.addEventListener('submit', async function(e){
     showSuccess(numero, nome, instagram);
     carregarVagas();
   }catch(err){
-    showError(err.message && !/fetch/i.test(err.message) ? err.message : 'Sem conexão. Confere sua internet e tenta de novo.');
+    showError(err.name === 'Error' ? err.message : 'Sem conexão. Confere sua internet e tenta de novo.');
   }finally{
     submitBtn.disabled = false;
     submitLabel.textContent = 'Confirmar minha vaga';
