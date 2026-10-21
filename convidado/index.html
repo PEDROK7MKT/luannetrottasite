@@ -773,6 +773,14 @@ button{font:inherit;color:inherit;}
   flex-shrink:0;
 }
 .dock-go .icon{font-size:18px;stroke-width:2.4;}
+@media (max-width:440px){
+  .dock-inner{gap:10px;}
+  .dock-pin{width:38px;height:38px;}
+  .dock-go{padding:12px 14px;font-size:14px;gap:6px;}
+}
+@media (max-width:340px){
+  .dock-pin{display:none;}
+}
 
 /* aviso de copiado */
 .toast{
@@ -1032,7 +1040,7 @@ button{font:inherit;color:inherit;}
 <nav class="dock" aria-label="Localização da festa">
   <div class="dock-inner">
     <span class="dock-pin"><svg class="icon"><use href="#i-pin"/></svg></span>
-    <span class="dock-text"><b>Meu Cafofo</b><span>Rua Flor-do-mato, 174 · Cidade Nova</span></span>
+    <span class="dock-text"><b>Meu Cafofo</b><span>Flor-do-mato, 174</span></span>
     <a class="dock-go" data-route href="https://www.google.com/maps/dir/?api=1&amp;destination=-12.119562,-44.959755" target="_blank" rel="noopener">Como chegar <svg class="icon"><use href="#i-nav"/></svg></a>
   </div>
 </nav>
@@ -1053,6 +1061,7 @@ const LUGAR = {
 };
 const INICIO = new Date('2026-10-21T14:00:00-03:00').getTime();
 const CARRETA = new Date('2026-10-21T19:00:00-03:00').getTime();
+const FIM = new Date('2026-10-22T06:00:00-03:00').getTime();
 
 // Confete caindo
 (function(){
@@ -1107,6 +1116,12 @@ if(isApple){
       title.textContent = 'Carreta Furacão em';
       statusText.textContent = 'A festa já começou';
       status.classList.add('live');
+    }else if(now >= FIM){
+      title.textContent = 'Festa dos 300 mil';
+      statusText.textContent = 'Obrigada por comemorar comigo';
+      status.classList.remove('live');
+      document.getElementById('countdown').style.display = 'none';
+      return;
     }else{
       title.textContent = 'Agora';
       statusText.textContent = 'Carreta Furacão na rua';
@@ -1123,7 +1138,8 @@ if(isApple){
   tick();
 })();
 
-// Copiar endereço
+// Copiar endereço (sem o nome: no Google, "Meu Cafofo" cai num bar homônimo a 3 km)
+const ENDERECO_COPIA = LUGAR.endereco + '\nhttps://maps.google.com/?q=' + LUGAR.lat + ',' + LUGAR.lng;
 const toast = document.getElementById('toast');
 function showToast(msg){
   document.getElementById('toastText').textContent = msg;
@@ -1133,17 +1149,17 @@ function showToast(msg){
 }
 document.getElementById('copyBtn').addEventListener('click', async () => {
   try{
-    await navigator.clipboard.writeText(LUGAR.nome + ' - ' + LUGAR.endereco);
+    await navigator.clipboard.writeText(ENDERECO_COPIA);
     showToast('Endereço copiado');
   }catch(e){
-    window.prompt('Copie o endereço:', LUGAR.nome + ' - ' + LUGAR.endereco);
+    window.prompt('Copie o endereço:', ENDERECO_COPIA);
   }
 });
 
 // Salvar na agenda: arquivo .ics no iPhone, Google Agenda no resto
 document.getElementById('calBtn').addEventListener('click', () => {
   const titulo = 'Festa dos 300 mil da Luanne';
-  const detalhes = 'Churrasco e bebida a partir das 14h. Passeio de Carreta Furacão às 19h.';
+  const detalhes = 'Meu Cafofo: ' + LUGAR.endereco + '. Churrasco e bebida a partir das 14h. Passeio de Carreta Furacão às 19h.';
   if(isApple){
     const ics = [
       'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//luannetrotta//festa300mil//PT',
@@ -1153,7 +1169,7 @@ document.getElementById('calBtn').addEventListener('click', () => {
       'DTSTART:20261021T170000Z',
       'DTEND:20261022T020000Z',
       'SUMMARY:' + titulo,
-      'LOCATION:' + LUGAR.nome + ' - ' + LUGAR.endereco.replace(/,/g, '\\,'),
+      'LOCATION:' + LUGAR.endereco.replace(/,/g, '\\,'),
       'DESCRIPTION:' + detalhes.replace(/,/g, '\\,'),
       'BEGIN:VALARM', 'TRIGGER:-PT2H', 'ACTION:DISPLAY', 'DESCRIPTION:' + titulo, 'END:VALARM',
       'END:VEVENT', 'END:VCALENDAR'
@@ -1168,7 +1184,7 @@ document.getElementById('calBtn').addEventListener('click', () => {
     const url = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
       + '&text=' + encodeURIComponent(titulo)
       + '&dates=20261021T170000Z/20261022T020000Z'
-      + '&location=' + encodeURIComponent(LUGAR.nome + ' - ' + LUGAR.endereco)
+      + '&location=' + encodeURIComponent(LUGAR.lat + ', ' + LUGAR.lng)
       + '&details=' + encodeURIComponent(detalhes);
     window.open(url, '_blank', 'noopener');
   }
