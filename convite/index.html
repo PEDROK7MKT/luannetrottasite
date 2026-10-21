@@ -445,35 +445,72 @@ a{color:inherit;text-decoration:none;}
 }
 .at-wrap input[type=text]{padding-left:34px;}
 
-fieldset{border:0;margin:0 0 15px;padding:0;}
-.choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.choice{position:relative;cursor:pointer;}
-.choice input{position:absolute;opacity:0;width:1px;height:1px;}
-.choice-box{
-  display:flex;
-  flex-direction:column;
+/* vagas */
+.vagas-pill{
+  display:inline-flex;
   align-items:center;
-  justify-content:center;
-  text-align:center;
-  gap:6px;
-  min-height:118px;
-  padding:14px 10px;
-  border:2.5px solid rgba(23,19,17,0.15);
-  border-radius:18px;
-  background:#FFF1E2;
-  transition:border-color 0.15s, background 0.15s, transform 0.15s, box-shadow 0.15s;
+  gap:8px;
+  margin-top:18px;
+  font-size:14px;
+  font-weight:700;
+  color:var(--yellow);
 }
-.choice-box .e{font-size:30px;line-height:1;}
-.choice-box b{font-size:15px;line-height:1.2;}
-.choice-box small{font-size:12px;color:rgba(23,19,17,0.6);line-height:1.3;}
-.choice:hover .choice-box{transform:translateY(-2px);}
-.choice input:checked + .choice-box{
-  border-color:var(--ink);
-  background:var(--yellow);
-  box-shadow:0 5px 0 var(--pink);
+.vagas-dot{
+  width:9px;height:9px;
+  border-radius:50%;
+  background:var(--pink);
+  animation:pulse-pink 1.4s ease-in-out infinite;
 }
-.choice.alt input:checked + .choice-box{background:var(--cyan);box-shadow:0 5px 0 var(--violet);}
-.choice input:focus-visible + .choice-box{outline:3px solid var(--pink);outline-offset:2px;}
+@keyframes pulse-pink{
+  0%,100%{box-shadow:0 0 0 0 rgba(255,61,165,0.7);}
+  50%{box-shadow:0 0 0 7px rgba(255,61,165,0);}
+}
+.vagas-meter{
+  margin-top:26px;
+  max-width:340px;
+  border:2px solid rgba(255,248,240,0.18);
+  background:rgba(255,248,240,0.05);
+  border-radius:22px;
+  padding:18px 20px 20px;
+}
+.vagas-meter-top{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
+.vagas-meter-num{
+  font-family:var(--font-party);
+  font-size:54px;
+  line-height:1;
+  background:linear-gradient(95deg, var(--yellow), var(--pink));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.vagas-meter-label{
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  color:rgba(255,248,240,0.75);
+  line-height:1.35;
+}
+.vagas-bar{
+  height:12px;
+  border-radius:100px;
+  background:rgba(255,248,240,0.12);
+  overflow:hidden;
+}
+.vagas-bar span{
+  display:block;
+  height:100%;
+  width:0;
+  border-radius:100px;
+  background:linear-gradient(90deg, var(--cyan), var(--violet), var(--pink));
+  transition:width 0.8s ease;
+}
+
+.soldout{display:none;text-align:center;padding:10px 0;}
+.soldout.show{display:block;}
+.soldout-emoji{font-size:54px;line-height:1;margin-bottom:12px;}
+.soldout h3{font-family:var(--font-party);font-weight:400;font-size:24px;margin-bottom:10px;}
+.soldout p{font-size:15px;line-height:1.6;color:rgba(23,19,17,0.78);}
 
 .form-submit{
   width:100%;
@@ -513,10 +550,33 @@ fieldset{border:0;margin:0 0 15px;padding:0;}
 
 .success{display:none;text-align:center;padding:10px 0;}
 .success.show{display:block;}
-.success-emoji{font-size:58px;line-height:1;margin-bottom:14px;}
+.carreta-3d{
+  position:relative;
+  width:100%;
+  aspect-ratio:4/3;
+  margin:0 auto 18px;
+  border-radius:20px;
+  overflow:hidden;
+  background:
+    radial-gradient(70% 60% at 30% 30%, rgba(255,61,165,0.35) 0%, transparent 70%),
+    radial-gradient(60% 60% at 80% 80%, rgba(46,230,214,0.25) 0%, transparent 70%),
+    var(--night);
+  box-shadow:inset 0 0 0 2px rgba(23,19,17,0.9);
+}
+.carreta-3d canvas{position:absolute;inset:0;width:100% !important;height:100% !important;display:block;}
+.carreta-fallback{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:64px;
+}
+.carreta-3d.live .carreta-fallback{display:none;}
 .success h3{font-family:var(--font-party);font-weight:400;font-size:24px;margin-bottom:10px;}
 .success p{font-size:15px;line-height:1.6;color:rgba(23,19,17,0.78);margin-bottom:8px;}
-.success .btn-ig{
+.success .btn-ig,
+.soldout .btn-ig{
   display:inline-flex;
   align-items:center;
   gap:8px;
@@ -532,10 +592,6 @@ fieldset{border:0;margin:0 0 15px;padding:0;}
 @media (max-width:860px){
   .rsvp-grid{grid-template-columns:1fr;gap:28px;}
   .form-card{padding:24px 16px;}
-}
-@media (max-width:360px){
-  .choice-grid{grid-template-columns:1fr;}
-  .choice-box{min-height:0;}
 }
 
 /* ===== FOOTER ===== */
@@ -574,8 +630,9 @@ fieldset{border:0;margin:0 0 15px;padding:0;}
       <div>
         <span class="tag"><span class="spark">✦</span> Convite exclusivo</span>
         <h1>Festa dos <span class="big">300 mil</span>de <span class="neon">Carreta Furacão</span></h1>
-        <p class="hero-sub">Você foi convidado(a) pra comemorar comigo os <strong>300 mil seguidores</strong>! Em parceria com a <strong>Carreta Furacão</strong>, a gente vai junto pra festa. Confirma aqui se você vai na carreta.</p>
-        <a href="#confirmar" class="btn-party">Confirmar presença 🎉</a>
+        <p class="hero-sub">Você foi convidado(a) pra comemorar comigo os <strong>300 mil seguidores</strong>! Em parceria com a <strong>Carreta Furacão</strong>, a gente vai junto pra festa. São só <strong>30 vagas</strong> na carreta: garanta a sua.</p>
+        <a href="#confirmar" class="btn-party">Garantir minha vaga 🎉</a>
+        <p class="vagas-pill" data-vagas-pill><span class="vagas-dot"></span> <span data-vagas-text>Carregando vagas...</span></p>
       </div>
 
       <div class="ticket">
@@ -634,12 +691,12 @@ fieldset{border:0;margin:0 0 15px;padding:0;}
       <div class="info-card" style="--c:var(--violet);">
         <div class="info-emoji">🚚</div>
         <p class="k">Carreta</p>
-        <p class="v">30 lugares</p>
+        <p class="v">30 vagas</p>
       </div>
     </div>
 
     <div class="notes">
-      <p class="note"><span>✅</span><span>Confirme abaixo se você vai de carreta ou por conta própria. Assim a gente sabe exatamente quem embarca.</span></p>
+      <p class="note"><span>✅</span><span>Garanta sua vaga no formulário abaixo. São só 30 lugares e, quando completar, as confirmações fecham na hora.</span></p>
       <p class="note"><span>⏱️</span><span>Chegue antes das 20h na Praça das Corujas. A carreta sai no horário!</span></p>
       <p class="note"><span>🤫</span><span>O convite é pessoal. Não compartilhe este link.</span></p>
     </div>
@@ -651,13 +708,27 @@ fieldset{border:0;margin:0 0 15px;padding:0;}
   <div class="container rsvp-grid">
     <div>
       <span class="section-label">✦ RSVP</span>
-      <h2>Confirme sua presença</h2>
-      <p class="section-intro">Leva menos de um minuto. A carreta tem 30 lugares: quando lotar, ainda dá pra confirmar indo por conta própria.</p>
+      <h2>Garanta sua vaga na carreta</h2>
+      <p class="section-intro">Leva menos de um minuto. A carreta tem 30 lugares e as confirmações fecham assim que completar.</p>
+      <div class="vagas-meter">
+        <div class="vagas-meter-top">
+          <span class="vagas-meter-num" data-vagas-num>--</span>
+          <span class="vagas-meter-label">vagas restantes<br>de 30</span>
+        </div>
+        <div class="vagas-bar"><span id="vagasBar"></span></div>
+      </div>
     </div>
 
     <div class="form-card">
+      <div class="soldout" id="soldout" role="status">
+        <div class="soldout-emoji">🔒</div>
+        <h3>Vagas esgotadas!</h3>
+        <p>Os 30 lugares da Carreta Furacão já foram preenchidos. Obrigada pelo carinho, nos vemos nas próximas! 💖</p>
+        <a href="https://instagram.com/luannetrotta" target="_blank" rel="noopener" class="btn-ig">Acompanhar no @luannetrotta</a>
+      </div>
+
       <form id="rsvpForm" novalidate>
-        <p class="form-title">Meu convite 🎟️</p>
+        <p class="form-title">Minha vaga 🎟️</p>
         <div class="form-error" id="formError" role="alert"></div>
         <div class="form-row">
           <label for="nome">Nome completo</label>
@@ -678,31 +749,20 @@ fieldset{border:0;margin:0 0 15px;padding:0;}
           <label for="cidade">Cidade</label>
           <input type="text" id="cidade" name="cidade" autocomplete="address-level2" maxlength="80" required>
         </div>
-        <fieldset>
-          <legend class="form-legend">Como você vai pra festa?</legend>
-          <div class="choice-grid">
-            <label class="choice">
-              <input type="radio" name="transporte" value="carreta" id="opt-carreta">
-              <span class="choice-box"><span class="e">🚚</span><b>Vou de Carreta Furacão</b><small>Embarque 20h na Praça das Corujas</small></span>
-            </label>
-            <label class="choice alt">
-              <input type="radio" name="transporte" value="proprio" id="opt-proprio">
-              <span class="choice-box"><span class="e">🚗</span><b>Vou por conta própria</b><small>Não preciso de lugar na carreta</small></span>
-            </label>
-          </div>
-        </fieldset>
         <div class="form-row">
           <label for="observacao">Recado pra Luanne <span class="opt">(opcional)</span></label>
           <textarea id="observacao" name="observacao" maxlength="600" placeholder="Algum aviso ou só um recado carinhoso..."></textarea>
         </div>
-        <button type="submit" class="form-submit" id="submitBtn">Confirmar presença 🎉</button>
+        <button type="submit" class="form-submit" id="submitBtn">Garantir minha vaga 🎉</button>
         <p class="form-note">Seus dados são usados só para a organização da festa.</p>
       </form>
 
       <div class="success" id="success" role="status">
-        <div class="success-emoji" id="successEmoji">🎉</div>
-        <h3 id="successTitle">Presença confirmada!</h3>
-        <p id="successText"></p>
+        <div class="carreta-3d" id="carreta3d" aria-label="Ilustração 3D da Carreta Furacão saindo de um furacão">
+          <div class="carreta-fallback">🚚🌪️</div>
+        </div>
+        <h3>Lugar na carreta garantido!</h3>
+        <p>Te espero na <strong>Praça das Corujas</strong> na <strong>quarta, 21/10</strong>. A carreta sai às <strong>20h em ponto</strong>, chega antes!</p>
         <a href="https://instagram.com/luannetrotta" target="_blank" rel="noopener" class="btn-ig">Acompanhar no @luannetrotta</a>
       </div>
     </div>
@@ -757,13 +817,69 @@ fieldset{border:0;margin:0 0 15px;padding:0;}
   tick();
 })();
 
-// Confirmação -> Supabase (chave pública; a tabela só aceita insert, sem leitura)
+// Vagas + confirmação -> Supabase (chave pública; a tabela só aceita insert, sem leitura)
 const SUPABASE_URL = 'https://jrvmjokalrqojuilepkb.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_jdqabUL5E4afOVSfr-7gbA_2qdcxyMs';
+const TOTAL_VAGAS = 30;
 
 const form = document.getElementById('rsvpForm');
 const errorBox = document.getElementById('formError');
 const submitBtn = document.getElementById('submitBtn');
+const soldout = document.getElementById('soldout');
+let confirmado = false;
+
+function renderVagas(n){
+  document.querySelectorAll('[data-vagas-num]').forEach(el => { el.textContent = n; });
+  document.querySelectorAll('[data-vagas-text]').forEach(el => {
+    el.textContent = n === 0 ? 'Vagas esgotadas' : n === 1 ? 'Resta só 1 vaga!' : 'Restam ' + n + ' de ' + TOTAL_VAGAS + ' vagas';
+  });
+  document.getElementById('vagasBar').style.width = ((TOTAL_VAGAS - n) / TOTAL_VAGAS * 100) + '%';
+  if(n === 0 && !confirmado){
+    form.style.display = 'none';
+    soldout.classList.add('show');
+  }
+}
+
+async function carregarVagas(){
+  try{
+    const res = await fetch(SUPABASE_URL + '/rest/v1/rpc/vagas_restantes', {
+      method:'POST',
+      headers:{ 'apikey':SUPABASE_KEY, 'Content-Type':'application/json' },
+      body:'{}'
+    });
+    if(!res.ok) return;
+    const n = await res.json();
+    if(typeof n === 'number') renderVagas(n);
+  }catch(e){}
+}
+carregarVagas();
+setInterval(carregarVagas, 20000);
+
+// Carrega o 3D da carreta em segundo plano, pra estar pronto na confirmação
+let carreta3dReady = null;
+function loadCarreta3D(){
+  if(carreta3dReady) return carreta3dReady;
+  const load = src => new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    s.src = src; s.onload = resolve; s.onerror = reject;
+    document.head.appendChild(s);
+  });
+  carreta3dReady = load('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js')
+    .then(() => load('/convite/carreta3d.js'));
+  return carreta3dReady;
+}
+window.addEventListener('load', () => setTimeout(loadCarreta3D, 600));
+
+function showSuccess(){
+  confirmado = true;
+  form.style.display = 'none';
+  document.getElementById('success').classList.add('show');
+  const stage = document.getElementById('carreta3d');
+  loadCarreta3D().then(() => {
+    if(window.Carreta3D && window.Carreta3D.mount(stage)) stage.classList.add('live');
+  }).catch(() => {});
+  document.getElementById('success').scrollIntoView({behavior:'smooth', block:'center'});
+}
 
 function showError(msg){
   errorBox.textContent = msg;
@@ -785,16 +901,13 @@ form.addEventListener('submit', async function(e){
   const instagram = normalizeInstagram(document.getElementById('instagram').value);
   const whatsapp = document.getElementById('whatsapp').value.replace(/\D/g, '');
   const cidade = document.getElementById('cidade').value.trim();
-  const transporte = (form.querySelector('input[name=transporte]:checked') || {}).value;
   const observacao = document.getElementById('observacao').value.trim();
 
   if(nome.length < 2) return showError('Preencha seu nome completo.');
   if(!/^[a-z0-9._]{1,30}$/.test(instagram)) return showError('Confira seu @ do Instagram (só letras, números, ponto e underline).');
   if(whatsapp.length < 10 || whatsapp.length > 13) return showError('Confira seu WhatsApp com DDD.');
   if(cidade.length < 2) return showError('Preencha sua cidade.');
-  if(!transporte) return showError('Escolha se você vai de Carreta Furacão ou por conta própria.');
 
-  const vaiDeCarreta = transporte === 'carreta';
   submitBtn.disabled = true;
   submitBtn.textContent = 'Enviando...';
 
@@ -808,38 +921,30 @@ form.addEventListener('submit', async function(e){
       },
       body:JSON.stringify({
         nome, instagram, whatsapp, cidade,
-        vai_de_carreta: vaiDeCarreta,
+        vai_de_carreta: true,
         observacao: observacao || null
       })
     });
 
     if(res.status === 409){
-      throw new Error('Esse @ já confirmou presença. Se precisar mudar algo, fala direto com a equipe da Luanne.');
+      throw new Error('Esse @ já garantiu a vaga! Se precisar mudar algo, fala direto com a equipe da Luanne.');
     }
     if(!res.ok){
       const body = await res.json().catch(() => ({}));
       if(body.message === 'carreta_lotada'){
-        document.getElementById('opt-proprio').checked = true;
-        throw new Error('Poxa, os 30 lugares da carreta já foram preenchidos! Você ainda pode confirmar presença indo por conta própria: já marquei essa opção, é só enviar de novo.');
+        renderVagas(0);
+        return;
       }
       throw new Error('Não conseguimos enviar agora. Tenta de novo em instantes.');
     }
 
-    if(vaiDeCarreta){
-      document.getElementById('successEmoji').textContent = '🚚';
-      document.getElementById('successTitle').textContent = 'Lugar na carreta garantido!';
-      document.getElementById('successText').innerHTML = 'Te espero na <strong>Praça das Corujas</strong> na <strong>quarta, 21/10</strong>. A carreta sai às <strong>20h em ponto</strong>, chega antes!';
-    }else{
-      document.getElementById('successEmoji').textContent = '🎉';
-      document.getElementById('successTitle').textContent = 'Presença confirmada!';
-      document.getElementById('successText').textContent = 'Anotado: você vai por conta própria. Nos vemos na festa!';
-    }
-    form.style.display = 'none';
-    document.getElementById('success').classList.add('show');
+    showSuccess();
+    carregarVagas();
   }catch(err){
     showError(err.message && !/fetch/i.test(err.message) ? err.message : 'Sem conexão. Confere sua internet e tenta de novo.');
+  }finally{
     submitBtn.disabled = false;
-    submitBtn.textContent = 'Confirmar presença 🎉';
+    submitBtn.textContent = 'Garantir minha vaga 🎉';
   }
 });
 </script>
