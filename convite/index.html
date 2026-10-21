@@ -6,7 +6,7 @@
 <title>Festa dos 300 Mil — Convite</title>
 <meta name="robots" content="noindex, nofollow">
 <meta name="description" content="Você foi convidado(a) pra Festa dos 300 Mil da Luanne Trotta. Garanta sua vaga na Carreta Furacão.">
-<meta property="og:title" content="Esse convite é seu! Festa dos 300 Mil 🎉">
+<meta property="og:title" content="Esse convite é seu! Festa dos 300 Mil">
 <meta property="og:description" content="Só 30 vagas na Carreta Furacão. Embarque na Praça das Corujas, quarta às 20h. Garanta a sua!">
 <meta property="og:image" content="https://www.luannetrotta.com/convite/og-convite.jpg">
 <meta property="og:image:type" content="image/jpeg">
@@ -23,21 +23,24 @@
 <link rel="preload" as="image" href="/convite/carreta-furacao.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Pacifico&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Pacifico&family=Outfit:wght@400;500;600;700;800&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
 <style>
 :root{
   --night:#12051F;
   --night-2:#1E0A33;
   --ink:#171311;
   --cream:#FFF8F0;
+  --paper:#FFF1E2;
   --pink:#FF3DA5;
   --yellow:#FFD23F;
+  --amber:#FFB627;
   --cyan:#2EE6D6;
   --orange:#FF7A2F;
   --violet:#8B5CF6;
   --font-party:'Bungee', cursive;
   --font-script:'Pacifico', cursive;
   --font-body:'Outfit', sans-serif;
+  --font-board:'Space Mono', monospace;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -52,9 +55,24 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 
+/* textura de papel impresso por cima de tudo */
+body::after{
+  content:'';
+  position:fixed;
+  inset:0;
+  z-index:50;
+  pointer-events:none;
+  opacity:0.13;
+  mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.2 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
 img{max-width:100%;display:block;}
 
 a{color:inherit;text-decoration:none;}
+
+.icon{width:1em;height:1em;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.icon.solid{fill:currentColor;stroke:none;}
 
 .container{
   max-width:1080px;
@@ -85,25 +103,30 @@ a{color:inherit;text-decoration:none;}
 }
 .confetti i{
   position:absolute;
-  top:-20px;
-  width:9px;height:14px;
+  top:-24px;
+  width:8px;height:13px;
   border-radius:2px;
-  opacity:0.85;
+  opacity:0.8;
   animation:fall linear infinite;
 }
+.confetti i.star{
+  width:14px;height:14px;
+  border-radius:0;
+  clip-path:polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%);
+}
 @keyframes fall{
-  0%{transform:translate3d(0,-20px,0) rotate(0deg);}
+  0%{transform:translate3d(0,-24px,0) rotate(0deg);}
   100%{transform:translate3d(var(--drift),105vh,0) rotate(720deg);}
 }
 
 /* ===== HERO ===== */
 .hero{
   position:relative;
-  padding:26px 0 60px;
+  padding:26px 0 64px;
   overflow:hidden;
   background:
     radial-gradient(60% 50% at 10% 15%, rgba(255,61,165,0.32) 0%, transparent 70%),
-    radial-gradient(50% 45% at 92% 30%, rgba(46,230,214,0.22) 0%, transparent 70%),
+    radial-gradient(50% 45% at 92% 30%, rgba(46,230,214,0.2) 0%, transparent 70%),
     radial-gradient(70% 60% at 50% 100%, rgba(139,92,246,0.4) 0%, transparent 70%),
     var(--night);
 }
@@ -184,8 +207,8 @@ a{color:inherit;text-decoration:none;}
 .hero-sub{
   font-size:18px;
   line-height:1.6;
-  color:rgba(255,248,240,0.85);
-  max-width:480px;
+  color:rgba(255,248,240,0.86);
+  max-width:470px;
   margin:20px 0 26px;
 }
 .hero-sub strong{color:var(--yellow);}
@@ -193,30 +216,32 @@ a{color:inherit;text-decoration:none;}
 .btn-party{
   display:inline-flex;
   align-items:center;
-  gap:10px;
-  background:linear-gradient(95deg, var(--yellow), var(--orange));
+  gap:12px;
+  background:var(--yellow);
   color:var(--ink);
-  padding:17px 30px;
+  padding:17px 28px;
   border-radius:100px;
   font-weight:800;
   font-size:17px;
   border:2px solid var(--ink);
-  box-shadow:0 6px 0 var(--pink), 0 0 30px rgba(255,210,63,0.35);
+  box-shadow:0 6px 0 var(--pink);
   transition:transform 0.15s, box-shadow 0.15s;
 }
-.btn-party:hover{transform:translateY(2px);box-shadow:0 4px 0 var(--pink), 0 0 30px rgba(255,210,63,0.35);}
+.btn-party .icon{font-size:20px;stroke-width:2.6;transition:transform 0.2s;}
+.btn-party:hover{transform:translateY(2px);box-shadow:0 4px 0 var(--pink);}
+.btn-party:hover .icon{transform:translateX(3px);}
 .btn-party:active{transform:translateY(6px);box-shadow:0 0 0 var(--pink);}
 
 .vagas-pill{
   display:flex;
   align-items:center;
-  gap:8px;
-  margin-top:18px;
+  gap:9px;
+  margin-top:20px;
   font-size:15px;
   font-weight:700;
   color:var(--yellow);
 }
-.vagas-dot{
+.live-dot{
   width:9px;height:9px;
   border-radius:50%;
   background:var(--pink);
@@ -248,7 +273,7 @@ a{color:inherit;text-decoration:none;}
   0%,100%{opacity:0.75;transform:scale(0.95);}
   50%{opacity:1;transform:scale(1.05);}
 }
-.art-wrap img{
+.art-wrap > img{
   position:relative;
   width:100%;
   height:100%;
@@ -261,8 +286,42 @@ a{color:inherit;text-decoration:none;}
   50%{transform:translateY(-14px) rotate(1.5deg);}
 }
 
+/* selo "só 30 vagas" */
+.sticker{
+  position:absolute;
+  top:2%;
+  left:-2%;
+  width:31%;
+  min-width:104px;
+  aspect-ratio:1;
+  z-index:3;
+  transform:rotate(-14deg);
+}
+.sticker svg.burst-shape{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  animation:spin 22s linear infinite;
+  filter:drop-shadow(0 6px 0 var(--ink));
+}
+@keyframes spin{to{transform:rotate(360deg);}}
+.sticker-text{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  color:var(--ink);
+  text-align:center;
+  line-height:1;
+}
+.sticker-text small{font-family:var(--font-body);font-weight:800;font-size:clamp(10px, 1.3vw, 13px);letter-spacing:0.1em;text-transform:uppercase;}
+.sticker-text b{font-family:var(--font-party);font-weight:400;font-size:clamp(30px, 4vw, 42px);line-height:0.95;}
+
 @media (max-width:860px){
-  .hero{padding:20px 0 52px;}
+  .hero{padding:20px 0 56px;}
   .top-bar{margin-bottom:24px;}
   .hero-grid{
     grid-template-columns:1fr;
@@ -272,60 +331,55 @@ a{color:inherit;text-decoration:none;}
       "body";
   }
   .hero-head{text-align:center;}
-  .art-wrap{max-width:360px;margin:18px auto 0;}
+  .art-wrap{max-width:350px;margin:18px auto 0;}
   .hero-body{text-align:center;}
   .hero-sub{margin:18px auto 24px;}
   .vagas-pill{justify-content:center;}
 }
 
-/* ===== COUNTDOWN ===== */
-.countdown-strip{
+/* ===== FAIXA ===== */
+.ribbon-wrap{
   position:relative;
   z-index:2;
-  background:linear-gradient(95deg, var(--pink) 0%, var(--violet) 50%, var(--cyan) 100%);
-  padding:22px 0;
-  text-align:center;
+  overflow:hidden;
+  padding:12px 0;
+  margin-top:-18px;
 }
-.countdown-label{
-  font-family:var(--font-script);
-  font-size:22px;
-  margin-bottom:10px;
-  color:var(--cream);
+.ribbon{
+  position:relative;
+  z-index:2;
+  background:var(--yellow);
+  color:var(--ink);
+  border-top:2px solid var(--ink);
+  border-bottom:2px solid var(--ink);
+  padding:12px 0;
+  overflow:hidden;
+  transform:rotate(-1.2deg);
+  margin:0 -12px;
 }
-.countdown{
+.ribbon-track{
   display:flex;
-  justify-content:center;
-  gap:12px;
+  gap:26px;
+  width:max-content;
+  white-space:nowrap;
+  animation:scroll-left 28s linear infinite;
 }
-.cd-box{
-  background:rgba(18,5,31,0.55);
-  border:2px solid rgba(255,248,240,0.35);
-  border-radius:16px;
-  min-width:74px;
-  padding:10px 8px 8px;
+@keyframes scroll-left{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
 }
-.cd-box b{
-  display:block;
+.ribbon-track span{
+  display:inline-flex;
+  align-items:center;
+  gap:26px;
   font-family:var(--font-party);
-  font-weight:400;
-  font-size:30px;
-  line-height:1;
-  color:var(--yellow);
+  font-size:17px;
+  letter-spacing:0.02em;
 }
-.cd-box span{font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;opacity:0.9;}
-.countdown-done{
-  font-family:var(--font-party);
-  font-size:22px;
-  color:var(--yellow);
-}
-@media (max-width:400px){
-  .countdown{gap:8px;}
-  .cd-box{min-width:64px;}
-  .cd-box b{font-size:24px;}
-}
+.ribbon-track .icon{font-size:16px;color:var(--pink);}
 
 /* ===== SECTIONS ===== */
-.section{padding:72px 0;position:relative;z-index:2;}
+.section{padding:76px 0;position:relative;z-index:2;}
 .section-label{
   display:inline-block;
   font-family:var(--font-script);
@@ -344,18 +398,173 @@ a{color:inherit;text-decoration:none;}
 }
 .section-intro{
   font-size:17px;
-  color:rgba(255,248,240,0.78);
-  max-width:560px;
+  color:rgba(255,248,240,0.8);
+  max-width:540px;
   line-height:1.6;
 }
 
-/* ===== INGRESSO + INFO ===== */
-.info-layout{
-  display:grid;
-  grid-template-columns:0.8fr 1.2fr;
-  gap:44px;
+/* ===== PAINEL DE EMBARQUE ===== */
+.board{
+  margin-top:34px;
+  background:#0A0610;
+  border-radius:22px;
+  border:2px solid #2A1F38;
+  box-shadow:0 0 0 6px #160C22, 0 30px 60px -20px rgba(0,0,0,0.8);
+  overflow:hidden;
+}
+.board-head{
+  display:flex;
   align-items:center;
-  margin-top:36px;
+  justify-content:space-between;
+  gap:12px;
+  padding:14px 20px;
+  background:#150D1F;
+  border-bottom:2px solid #2A1F38;
+  font-family:var(--font-board);
+  font-size:12.5px;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:rgba(255,248,240,0.7);
+}
+.board-head-title{display:inline-flex;align-items:center;gap:10px;color:var(--amber);}
+.board-head-title .icon{font-size:18px;}
+.board-live{display:inline-flex;align-items:center;gap:8px;}
+.board-live .live-dot{background:#3DFF8A;animation:pulse-green 1.4s ease-in-out infinite;}
+@keyframes pulse-green{
+  0%,100%{box-shadow:0 0 0 0 rgba(61,255,138,0.6);}
+  50%{box-shadow:0 0 0 6px rgba(61,255,138,0);}
+}
+
+.board-body{
+  display:grid;
+  grid-template-columns:auto 1fr;
+}
+.board-count{
+  padding:26px 28px;
+  border-right:2px solid #2A1F38;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.board-label{
+  font-family:var(--font-board);
+  font-size:12px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:rgba(255,248,240,0.5);
+  margin-bottom:12px;
+}
+.flip{display:flex;align-items:flex-start;gap:8px;}
+.flip-unit{display:flex;flex-direction:column;align-items:center;gap:8px;}
+.flip-digits{display:flex;gap:4px;}
+.flip-digits b{
+  position:relative;
+  width:40px;
+  height:56px;
+  border-radius:7px;
+  background:linear-gradient(180deg, #2A2233 0%, #2A2233 49%, #1C1624 51%, #1C1624 100%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:var(--font-board);
+  font-size:34px;
+  color:var(--amber);
+  box-shadow:inset 0 -2px 0 rgba(0,0,0,0.5), 0 2px 0 #000;
+}
+.flip-digits b::after{
+  content:'';
+  position:absolute;
+  left:0;right:0;
+  top:50%;
+  height:2px;
+  margin-top:-1px;
+  background:#0A0610;
+}
+.flip-digits b.tick{animation:flip 0.35s ease;}
+@keyframes flip{
+  0%{transform:perspective(160px) rotateX(0);}
+  50%{transform:perspective(160px) rotateX(-75deg);filter:brightness(0.6);}
+  100%{transform:perspective(160px) rotateX(0);}
+}
+.flip-unit small{
+  font-family:var(--font-board);
+  font-size:10.5px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:rgba(255,248,240,0.45);
+}
+.flip-sep{
+  font-family:var(--font-board);
+  font-size:30px;
+  line-height:56px;
+  color:var(--amber);
+  opacity:0.7;
+}
+.board-gone{
+  font-family:var(--font-board);
+  font-size:22px;
+  color:var(--amber);
+}
+
+.board-rows{display:flex;flex-direction:column;}
+.board-row{
+  display:grid;
+  grid-template-columns:150px 1fr;
+  align-items:center;
+  gap:14px;
+  padding:15px 24px;
+  border-bottom:1px dashed #2A1F38;
+}
+.board-row:last-child{border-bottom:0;}
+.board-row .k{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-family:var(--font-board);
+  font-size:11.5px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:rgba(255,248,240,0.5);
+}
+.board-row .k .icon{font-size:17px;color:var(--pink);}
+.board-row .v{
+  font-family:var(--font-board);
+  font-size:20px;
+  color:var(--amber);
+  text-transform:uppercase;
+  letter-spacing:0.02em;
+}
+.board-row .v small{
+  display:block;
+  font-size:11.5px;
+  color:rgba(255,248,240,0.45);
+  letter-spacing:0.08em;
+  margin-top:3px;
+}
+
+@media (max-width:860px){
+  .board-body{grid-template-columns:1fr;}
+  .board-count{border-right:0;border-bottom:2px solid #2A1F38;align-items:center;padding:22px 16px;}
+  .board-row{grid-template-columns:118px 1fr;padding:14px 16px;gap:10px;}
+  .board-row .v{font-size:16px;}
+}
+@media (max-width:380px){
+  .flip-digits b{width:32px;height:48px;font-size:28px;}
+  .flip-sep{line-height:48px;font-size:24px;}
+  .board-row{grid-template-columns:1fr;gap:4px;}
+}
+
+/* ===== CONVITE + REGRAS ===== */
+.invite{
+  background:
+    radial-gradient(50% 50% at 0% 30%, rgba(255,61,165,0.16) 0%, transparent 70%),
+    var(--night);
+}
+.invite-layout{
+  display:grid;
+  grid-template-columns:0.85fr 1.15fr;
+  gap:56px;
+  align-items:center;
 }
 
 .ticket{
@@ -366,7 +575,7 @@ a{color:inherit;text-decoration:none;}
   color:var(--ink);
   border-radius:24px;
   transform:rotate(-3deg);
-  box-shadow:0 0 0 3px var(--pink), 0 0 50px rgba(255,61,165,0.45), 0 30px 60px -20px rgba(0,0,0,0.7);
+  box-shadow:0 0 0 3px var(--pink), 0 0 50px rgba(255,61,165,0.4), 0 30px 60px -20px rgba(0,0,0,0.7);
 }
 .ticket-photo{
   position:relative;
@@ -426,68 +635,41 @@ a{color:inherit;text-decoration:none;}
   letter-spacing:0.06em;
   color:rgba(23,19,17,0.55);
 }
-.ticket-row b{display:block;font-size:15px;color:var(--ink);letter-spacing:0;text-transform:none;margin-top:2px;}
+.ticket-row b{display:block;font-size:15px;color:var(--ink);letter-spacing:0;text-transform:none;margin-top:2px;white-space:nowrap;}
 
-.info-grid{
+.rules{list-style:none;margin-top:28px;display:grid;gap:4px;}
+.rule{
   display:grid;
-  grid-template-columns:repeat(2, 1fr);
+  grid-template-columns:58px 1fr;
   gap:14px;
+  align-items:start;
+  padding:16px 0;
+  border-bottom:1px solid rgba(255,248,240,0.12);
 }
-.info-card{
-  border-radius:22px;
-  padding:20px 18px;
-  background:rgba(255,248,240,0.05);
-  border:2px solid var(--c);
-  box-shadow:0 0 24px -6px var(--c);
-}
-.info-emoji{font-size:28px;margin-bottom:10px;line-height:1;}
-.info-card .k{
-  font-size:12px;
-  font-weight:700;
-  letter-spacing:0.08em;
-  text-transform:uppercase;
-  color:var(--c);
-  margin-bottom:4px;
-}
-.info-card .v{
+.rule:last-child{border-bottom:0;}
+.rule-num{
   font-family:var(--font-party);
-  font-size:19px;
-  line-height:1.15;
+  font-size:30px;
+  line-height:1;
+  color:transparent;
+  -webkit-text-stroke:1.5px var(--yellow);
 }
-
-.notes{
-  margin-top:22px;
-  display:grid;
-  gap:10px;
-}
-.note{
-  display:flex;
-  gap:12px;
-  align-items:flex-start;
-  font-size:16px;
-  line-height:1.5;
-  color:rgba(255,248,240,0.88);
-}
-.note span:first-child{font-size:18px;line-height:1.35;}
+.rule h3{font-size:18px;font-weight:800;margin-bottom:3px;}
+.rule p{font-size:16px;line-height:1.55;color:rgba(255,248,240,0.75);}
 
 @media (max-width:860px){
-  .info-layout{grid-template-columns:1fr;gap:40px;}
+  .invite-layout{grid-template-columns:1fr;gap:44px;}
   .ticket{max-width:290px;}
   .ticket-body{padding:14px 18px 18px;}
   .ticket-row{gap:8px;font-size:10.5px;}
-  .ticket-row b{font-size:13.5px;white-space:nowrap;}
-}
-@media (max-width:400px){
-  .info-grid{gap:10px;}
-  .info-card{padding:16px 12px;}
-  .info-card .v{font-size:16px;}
+  .ticket-row b{font-size:13.5px;}
 }
 
 /* ===== FORM ===== */
 .rsvp{
   background:
     radial-gradient(50% 40% at 85% 10%, rgba(255,61,165,0.22) 0%, transparent 70%),
-    radial-gradient(50% 40% at 10% 90%, rgba(46,230,214,0.18) 0%, transparent 70%),
+    radial-gradient(50% 40% at 10% 90%, rgba(46,230,214,0.16) 0%, transparent 70%),
     var(--night-2);
 }
 .rsvp-grid{
@@ -500,8 +682,8 @@ a{color:inherit;text-decoration:none;}
 .vagas-meter{
   margin-top:26px;
   max-width:340px;
-  border:2px solid rgba(255,248,240,0.18);
-  background:rgba(255,248,240,0.05);
+  border:2px solid rgba(255,248,240,0.16);
+  background:rgba(255,248,240,0.04);
   border-radius:22px;
   padding:18px 20px 20px;
 }
@@ -510,42 +692,68 @@ a{color:inherit;text-decoration:none;}
   font-family:var(--font-party);
   font-size:54px;
   line-height:1;
-  background:linear-gradient(95deg, var(--yellow), var(--pink));
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
+  color:var(--yellow);
 }
 .vagas-meter-label{
   font-size:13px;
   font-weight:700;
   letter-spacing:0.06em;
   text-transform:uppercase;
-  color:rgba(255,248,240,0.78);
+  color:rgba(255,248,240,0.75);
   line-height:1.35;
 }
 .vagas-bar{
-  height:12px;
-  border-radius:100px;
-  background:rgba(255,248,240,0.12);
-  overflow:hidden;
+  display:grid;
+  grid-template-columns:repeat(30, 1fr);
+  gap:3px;
 }
-.vagas-bar span{
-  display:block;
-  height:100%;
-  width:0;
-  border-radius:100px;
-  background:linear-gradient(90deg, var(--cyan), var(--violet), var(--pink));
-  transition:width 0.8s ease;
+.vagas-bar i{
+  height:14px;
+  border-radius:3px;
+  background:rgba(255,248,240,0.14);
+  transition:background 0.4s;
 }
+.vagas-bar i.on{background:var(--pink);}
 
 .form-card{
   position:relative;
   background:var(--cream);
   color:var(--ink);
-  border-radius:26px;
-  padding:30px;
-  box-shadow:0 0 0 3px var(--yellow), 0 0 50px -10px rgba(255,210,63,0.5);
+  border-radius:24px;
+  box-shadow:0 0 0 3px var(--yellow), 0 30px 60px -20px rgba(0,0,0,0.7);
 }
+.form-stub{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:16px 26px;
+  font-family:var(--font-board);
+  font-size:11.5px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:rgba(23,19,17,0.6);
+  white-space:nowrap;
+}
+.form-stub b{color:var(--pink);}
+.form-cut{
+  position:relative;
+  border-top:3px dashed rgba(23,19,17,0.2);
+  margin:0 22px;
+}
+.form-cut::before,
+.form-cut::after{
+  content:'';
+  position:absolute;
+  top:-15px;
+  width:28px;height:28px;
+  border-radius:50%;
+  background:var(--night-2);
+}
+.form-cut::before{left:-38px;}
+.form-cut::after{right:-38px;}
+.form-inner{padding:24px 28px 28px;}
+
 .form-title{
   font-family:var(--font-party);
   font-size:22px;
@@ -565,7 +773,7 @@ a{color:inherit;text-decoration:none;}
   padding:13px 16px;
   border-radius:12px;
   border:2px solid rgba(23,19,17,0.12);
-  background:#FFF1E2;
+  background:var(--paper);
   font-family:var(--font-body);
   font-size:16px;
   color:var(--ink);
@@ -587,7 +795,11 @@ a{color:inherit;text-decoration:none;}
 
 .form-submit{
   width:100%;
-  background:linear-gradient(95deg, var(--pink), var(--violet));
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  background:var(--pink);
   color:var(--cream);
   border:2px solid var(--ink);
   padding:17px;
@@ -600,6 +812,7 @@ a{color:inherit;text-decoration:none;}
   transition:transform 0.15s, box-shadow 0.15s, opacity 0.2s;
   margin-top:4px;
 }
+.form-submit .icon{font-size:20px;stroke-width:2.6;}
 .form-submit:hover{transform:translateY(2px);box-shadow:0 4px 0 var(--ink);}
 .form-submit:disabled{opacity:0.6;cursor:wait;}
 .form-error{
@@ -621,41 +834,26 @@ a{color:inherit;text-decoration:none;}
   text-align:center;
 }
 
-.success,
-.soldout{display:none;text-align:center;padding:4px 0 8px;}
-.success.show,
+.soldout{display:none;text-align:center;padding:36px 26px 34px;}
 .soldout.show{display:block;}
-.success-art{
-  width:78%;
-  max-width:280px;
-  margin:-70px auto 6px;
-  animation:pop-in 0.7s cubic-bezier(.2,1.4,.4,1) both;
+.soldout-icon{
+  width:70px;height:70px;
+  margin:0 auto 16px;
+  border-radius:50%;
+  background:var(--ink);
+  color:var(--yellow);
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
-.success-art img{
-  width:100%;
-  height:auto;
-  animation:float 4s ease-in-out 0.7s infinite;
-  filter:drop-shadow(0 16px 20px rgba(23,19,17,0.3));
-}
-@keyframes pop-in{
-  0%{opacity:0;transform:scale(0.3) rotate(-12deg);}
-  100%{opacity:1;transform:scale(1) rotate(0);}
-}
-.success-kicker{
-  font-family:var(--font-script);
-  font-size:22px;
-  color:var(--pink);
-}
-.success h3,
-.soldout h3{font-family:var(--font-party);font-weight:400;font-size:24px;line-height:1.15;margin:4px 0 10px;}
-.success p,
-.soldout p{font-size:16px;line-height:1.6;color:rgba(23,19,17,0.8);margin-bottom:8px;}
-.soldout-emoji{font-size:54px;line-height:1;margin-bottom:12px;}
+.soldout-icon .icon{font-size:32px;}
+.soldout h3{font-family:var(--font-party);font-weight:400;font-size:24px;line-height:1.15;margin-bottom:10px;}
+.soldout p{font-size:16px;line-height:1.6;color:rgba(23,19,17,0.8);}
 .btn-ig{
   display:inline-flex;
   align-items:center;
-  gap:8px;
-  margin-top:12px;
+  gap:9px;
+  margin-top:16px;
   background:var(--ink);
   color:var(--cream);
   padding:13px 22px;
@@ -663,24 +861,146 @@ a{color:inherit;text-decoration:none;}
   font-weight:700;
   font-size:15px;
 }
+.btn-ig .icon{font-size:18px;}
+
+@media (max-width:860px){
+  .rsvp-grid{grid-template-columns:1fr;gap:28px;}
+  .form-inner{padding:22px 16px 24px;}
+  .form-stub{padding:14px 18px;font-size:10.5px;}
+}
+@media (max-width:480px){
+  .stub-date{display:none;}
+}
+
+/* ===== INGRESSO PERSONALIZADO ===== */
+.success{display:none;}
+.success.show{display:block;animation:pop-in 0.6s cubic-bezier(.2,1.3,.4,1) both;}
+@keyframes pop-in{
+  0%{opacity:0;transform:scale(0.85) rotate(-3deg);}
+  100%{opacity:1;transform:scale(1) rotate(0);}
+}
+.pass-top{
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:20px 22px 18px;
+  background:var(--night);
+  color:var(--cream);
+  border-radius:24px 24px 0 0;
+  overflow:hidden;
+}
+.pass-top::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(60% 90% at 0% 0%, rgba(255,61,165,0.5) 0%, transparent 70%),
+    radial-gradient(60% 90% at 100% 100%, rgba(46,230,214,0.35) 0%, transparent 70%);
+}
+.pass-top img{position:relative;width:96px;height:auto;flex-shrink:0;animation:float 4s ease-in-out infinite;}
+.pass-top-text{position:relative;}
+.pass-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  font-family:var(--font-board);
+  font-size:11.5px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:#3DFF8A;
+}
+.pass-kicker .icon{font-size:15px;stroke-width:3;}
+.pass-num{
+  font-family:var(--font-party);
+  font-size:44px;
+  line-height:1;
+  color:var(--yellow);
+  margin-top:6px;
+}
+.pass-num span{font-size:20px;color:rgba(255,248,240,0.6);}
+.pass-event{font-family:var(--font-script);font-size:17px;color:var(--cyan);margin-top:2px;}
+.pass-cut{
+  position:relative;
+  border-top:3px dashed rgba(23,19,17,0.22);
+}
+.pass-cut::before,
+.pass-cut::after{
+  content:'';
+  position:absolute;
+  top:-15px;
+  width:28px;height:28px;
+  border-radius:50%;
+  background:var(--night-2);
+}
+.pass-cut::before{left:-14px;}
+.pass-cut::after{right:-14px;}
+.pass-body{padding:20px 24px 24px;}
+.pass-label{
+  font-family:var(--font-board);
+  font-size:11px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:rgba(23,19,17,0.5);
+}
+.pass-name{
+  font-family:var(--font-party);
+  font-size:24px;
+  line-height:1.15;
+  margin-top:3px;
+  word-break:break-word;
+}
+.pass-ig{font-weight:700;color:var(--pink);margin-top:2px;}
+.pass-grid{
+  display:grid;
+  grid-template-columns:auto auto 1fr;
+  gap:14px;
+  margin:18px 0;
+  padding:14px 0;
+  border-top:1px solid rgba(23,19,17,0.12);
+  border-bottom:1px solid rgba(23,19,17,0.12);
+}
+.pass-grid b{display:block;font-size:16px;font-weight:800;margin-top:3px;}
+.barcode{display:flex;align-items:stretch;height:52px;gap:2px;}
+.barcode i{background:var(--ink);border-radius:1px;}
+.barcode-id{
+  font-family:var(--font-board);
+  font-size:11px;
+  letter-spacing:0.3em;
+  text-align:center;
+  margin-top:6px;
+  color:rgba(23,19,17,0.6);
+}
+.pass-hint{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  font-size:14.5px;
+  font-weight:600;
+  color:rgba(23,19,17,0.75);
+  background:var(--paper);
+  border-radius:12px;
+  padding:11px 12px;
+  margin-top:18px;
+  text-align:center;
+}
+.pass-hint .icon{font-size:18px;color:var(--pink);}
+.pass-actions{text-align:center;}
 
 /* explosão de confete na confirmação */
 .burst{
   position:absolute;
-  left:50%;top:22%;
+  left:50%;top:18%;
   width:10px;height:14px;
   border-radius:2px;
   pointer-events:none;
+  z-index:5;
   animation:burst 1.4s cubic-bezier(.15,.7,.35,1) forwards;
 }
 @keyframes burst{
   0%{transform:translate(-50%,-50%) rotate(0);opacity:1;}
   100%{transform:translate(calc(-50% + var(--x)), calc(-50% + var(--y))) rotate(var(--r));opacity:0;}
-}
-
-@media (max-width:860px){
-  .rsvp-grid{grid-template-columns:1fr;gap:28px;}
-  .form-card{padding:24px 16px;}
 }
 
 /* ===== FOOTER ===== */
@@ -700,10 +1020,26 @@ a{color:inherit;text-decoration:none;}
   gap:12px;
   font-size:14px;
 }
+.footer a{display:inline-flex;align-items:center;gap:8px;}
 .footer a:hover{color:var(--yellow);}
 </style>
 </head>
 <body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 0C12.8 7.2 16.8 11.2 24 12 16.8 12.8 12.8 16.8 12 24 11.2 16.8 7.2 12.8 0 12 7.2 11.2 11.2 7.2 12 0Z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21.5s-6.8-6-6.8-11.4a6.8 6.8 0 0 1 13.6 0c0 5.4-6.8 11.4-6.8 11.4z"/><circle cx="12" cy="10.1" r="2.5"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.8"/><path d="M12 7.2V12l3.2 2.1"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2.8"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4M5 4.5h11.5l-2.2 4 2.2 4H5"/></symbol>
+  <symbol id="i-seat" viewBox="0 0 24 24"><path d="M7 4.5h6a2 2 0 0 1 2 2V13H9a2 2 0 0 1-2-2z"/><path d="M5 13h12.5a1.5 1.5 0 0 1 1.5 1.5V16H5zM7.5 16v4M16.5 16v4"/></symbol>
+  <symbol id="i-bus" viewBox="0 0 24 24"><rect x="2" y="6" width="13.5" height="10" rx="1.6"/><path d="M15.5 9.5h3.6l2.9 3.3V16h-6.5z"/><circle cx="6.5" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/><path d="M12 14.5v2.5"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M4.5 12.5l5 5 10-11"/></symbol>
+  <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8h3l1.6-2.5h6.8L17 8h3a1.5 1.5 0 0 1 1.5 1.5v9A1.5 1.5 0 0 1 20 20H4a1.5 1.5 0 0 1-1.5-1.5v-9A1.5 1.5 0 0 1 4 8z"/><circle cx="12" cy="13.5" r="3.6"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><rect x="2.8" y="2.8" width="18.4" height="18.4" rx="5.2"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.4" cy="6.6" r="0.7" fill="currentColor" stroke="none"/></symbol>
+</svg>
 
 <div class="confetti" id="confetti" aria-hidden="true"></div>
 
@@ -723,85 +1059,105 @@ a{color:inherit;text-decoration:none;}
 
       <div class="hero-art">
         <div class="art-wrap">
+          <div class="sticker" aria-hidden="true">
+            <svg class="burst-shape" viewBox="0 0 100 100"><polygon fill="#FFD23F" stroke="#171311" stroke-width="2.4" stroke-linejoin="round" points="50.0,0.0 56.7,7.5 65.5,2.4 69.5,11.7 79.4,9.5 80.4,19.6 90.5,20.6 88.3,30.5 97.6,34.5 92.5,43.3 100.0,50.0 92.5,56.7 97.6,65.5 88.3,69.5 90.5,79.4 80.4,80.4 79.4,90.5 69.5,88.3 65.5,97.6 56.7,92.5 50.0,100.0 43.3,92.5 34.5,97.6 30.5,88.3 20.6,90.5 19.6,80.4 9.5,79.4 11.7,69.5 2.4,65.5 7.5,56.7 0.0,50.0 7.5,43.3 2.4,34.5 11.7,30.5 9.5,20.6 19.6,19.6 20.6,9.5 30.5,11.7 34.5,2.4 43.3,7.5"/></svg>
+            <span class="sticker-text"><small>Só</small><b>30</b><small>vagas</small></span>
+          </div>
           <img src="/convite/carreta-furacao.webp" alt="Carreta de festa saindo de um furacão colorido" width="1067" height="1100">
         </div>
       </div>
 
       <div class="hero-body">
-        <p class="hero-sub">Chegamos a <strong>300 mil seguidores</strong> e eu quero comemorar com você! Em parceria com a <strong>Carreta Furacão</strong>, a gente vai junto pra festa. São só <strong>30 vagas</strong> na carreta: garanta a sua.</p>
-        <a href="#confirmar" class="btn-party">Garantir minha vaga 🎉</a>
-        <p class="vagas-pill"><span class="vagas-dot"></span> <span data-vagas-text>Carregando vagas...</span></p>
+        <p class="hero-sub">Chegamos a <strong>300 mil</strong> e eu quero comemorar com quem fez isso acontecer. Em parceria com a <strong>Carreta Furacão</strong>, a gente sai junto da Praça das Corujas direto pra festa.</p>
+        <a href="#confirmar" class="btn-party">Garantir minha vaga <svg class="icon"><use href="#i-arrow"/></svg></a>
+        <p class="vagas-pill"><span class="live-dot"></span> <span data-vagas-text>Carregando vagas...</span></p>
       </div>
     </div>
   </div>
 </header>
 
-<!-- COUNTDOWN -->
-<div class="countdown-strip">
-  <p class="countdown-label">A carreta sai em...</p>
-  <div class="countdown" id="countdown">
-    <div class="cd-box"><b id="cd-d">--</b><span>dias</span></div>
-    <div class="cd-box"><b id="cd-h">--</b><span>horas</span></div>
-    <div class="cd-box"><b id="cd-m">--</b><span>min</span></div>
-    <div class="cd-box"><b id="cd-s">--</b><span>seg</span></div>
+<!-- FAIXA -->
+<div class="ribbon-wrap" aria-hidden="true">
+<div class="ribbon">
+  <div class="ribbon-track">
+    <span>Festa dos 300 mil <svg class="icon solid"><use href="#i-spark"/></svg></span>
+    <span>Carreta Furacão <svg class="icon solid"><use href="#i-spark"/></svg></span>
+    <span>Quarta 21.10 <svg class="icon solid"><use href="#i-spark"/></svg></span>
+    <span>Saída 20h <svg class="icon solid"><use href="#i-spark"/></svg></span>
+    <span>Praça das Corujas <svg class="icon solid"><use href="#i-spark"/></svg></span>
+    <span>Festa dos 300 mil <svg class="icon solid"><use href="#i-spark"/></svg></span>
+    <span>Carreta Furacão <svg class="icon solid"><use href="#i-spark"/></svg></span>
+    <span>Quarta 21.10 <svg class="icon solid"><use href="#i-spark"/></svg></span>
+    <span>Saída 20h <svg class="icon solid"><use href="#i-spark"/></svg></span>
+    <span>Praça das Corujas <svg class="icon solid"><use href="#i-spark"/></svg></span>
   </div>
 </div>
+</div>
 
-<!-- INFO -->
-<section class="section" id="info">
+<!-- PAINEL DE EMBARQUE -->
+<section class="section" id="embarque">
   <div class="container">
     <span class="section-label">Anota aí</span>
-    <h2>Como vai ser o rolê</h2>
-    <p class="section-intro">A festa é fechada, só pra convidados. Quem garantir a vaga se encontra na Praça das Corujas e a Carreta Furacão leva todo mundo direto pra festa.</p>
+    <h2>Painel de embarque</h2>
+    <p class="section-intro">A festa é fechada, só pra convidados. O endereço fica com a carreta: quem embarca na Praça das Corujas vai direto pra lá.</p>
 
-    <div class="info-layout">
-      <div class="ticket">
-        <div class="ticket-photo">
-          <img src="/convite/luanne.jpg" alt="Luanne Trotta">
-          <span class="ticket-stamp">VIP</span>
-        </div>
-        <div class="ticket-cut"></div>
-        <div class="ticket-body">
-          <p class="ticket-sign">com carinho, Luanne</p>
-          <p class="ticket-title">Festa dos 300 Mil</p>
-          <div class="ticket-row">
-            <span>Data<b>Qua, 21/10</b></span>
-            <span>Saída<b>20h</b></span>
-            <span>Embarque<b>Pç. das Corujas</b></span>
+    <div class="board">
+      <div class="board-head">
+        <span class="board-head-title"><svg class="icon"><use href="#i-bus"/></svg> Carreta Furacão</span>
+        <span class="board-live"><span class="live-dot"></span> Ao vivo</span>
+      </div>
+      <div class="board-body">
+        <div class="board-count">
+          <p class="board-label">Saída em</p>
+          <div class="flip" id="countdown" aria-live="off">
+            <div class="flip-unit"><div class="flip-digits" data-unit="h"><b>-</b><b>-</b></div><small>horas</small></div>
+            <span class="flip-sep">:</span>
+            <div class="flip-unit"><div class="flip-digits" data-unit="m"><b>-</b><b>-</b></div><small>min</small></div>
+            <span class="flip-sep">:</span>
+            <div class="flip-unit"><div class="flip-digits" data-unit="s"><b>-</b><b>-</b></div><small>seg</small></div>
           </div>
+        </div>
+        <div class="board-rows">
+          <div class="board-row"><span class="k"><svg class="icon"><use href="#i-cal"/></svg> Data</span><span class="v">Qua 21.10</span></div>
+          <div class="board-row"><span class="k"><svg class="icon"><use href="#i-clock"/></svg> Partida</span><span class="v">20:00 em ponto</span></div>
+          <div class="board-row"><span class="k"><svg class="icon"><use href="#i-pin"/></svg> Embarque</span><span class="v">Praça das Corujas</span></div>
+          <div class="board-row"><span class="k"><svg class="icon"><use href="#i-flag"/></svg> Destino</span><span class="v">Festa dos 300 mil<small>Endereço só com a carreta</small></span></div>
+          <div class="board-row"><span class="k"><svg class="icon"><use href="#i-seat"/></svg> Lugares</span><span class="v" data-vagas-board>-- livres de 30</span></div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
 
-      <div>
-        <div class="info-grid">
-          <div class="info-card" style="--c:var(--pink);">
-            <div class="info-emoji">📍</div>
-            <p class="k">Embarque</p>
-            <p class="v">Praça das Corujas</p>
-          </div>
-          <div class="info-card" style="--c:var(--yellow);">
-            <div class="info-emoji">⏰</div>
-            <p class="k">Saída</p>
-            <p class="v">20h em ponto</p>
-          </div>
-          <div class="info-card" style="--c:var(--cyan);">
-            <div class="info-emoji">📅</div>
-            <p class="k">Quando</p>
-            <p class="v">Quarta, 21/10</p>
-          </div>
-          <div class="info-card" style="--c:var(--violet);">
-            <div class="info-emoji">🎟️</div>
-            <p class="k">Carreta</p>
-            <p class="v">30 vagas</p>
-          </div>
-        </div>
-
-        <div class="notes">
-          <p class="note"><span>✅</span><span>Garanta sua vaga no formulário abaixo. São só 30 lugares e, quando completar, as confirmações fecham na hora.</span></p>
-          <p class="note"><span>⏱️</span><span>Chegue antes das 20h na Praça das Corujas. A carreta sai no horário!</span></p>
-          <p class="note"><span>🤫</span><span>O convite é pessoal. Não compartilhe este link.</span></p>
+<!-- CONVITE + REGRAS -->
+<section class="section invite" id="convite">
+  <div class="container invite-layout">
+    <div class="ticket">
+      <div class="ticket-photo">
+        <img src="/convite/luanne.jpg" alt="Luanne Trotta">
+        <span class="ticket-stamp">VIP</span>
+      </div>
+      <div class="ticket-cut"></div>
+      <div class="ticket-body">
+        <p class="ticket-sign">com carinho, Luanne</p>
+        <p class="ticket-title">Festa dos 300 Mil</p>
+        <div class="ticket-row">
+          <span>Data<b>Qua, 21/10</b></span>
+          <span>Saída<b>20h</b></span>
+          <span>Embarque<b>Pç. das Corujas</b></span>
         </div>
       </div>
+    </div>
+
+    <div>
+      <span class="section-label">O combinado</span>
+      <h2>Regras da carreta</h2>
+      <ol class="rules">
+        <li class="rule"><span class="rule-num">01</span><div><h3>Confirme aqui</h3><p>A lista da carreta é por este formulário. Bateu 30, fechou.</p></div></li>
+        <li class="rule"><span class="rule-num">02</span><div><h3>Chegue antes das 20h</h3><p>Ponto de encontro na Praça das Corujas. A carreta sai no horário.</p></div></li>
+        <li class="rule"><span class="rule-num">03</span><div><h3>Mostre seu ingresso</h3><p>Depois de confirmar você recebe um ingresso com seu número. Tira print e mostra no embarque.</p></div></li>
+        <li class="rule"><span class="rule-num">04</span><div><h3>Convite é pessoal</h3><p>Não repassa o link. Cada vaga tem nome.</p></div></li>
+      </ol>
     </div>
   </div>
 </section>
@@ -810,62 +1166,86 @@ a{color:inherit;text-decoration:none;}
 <section class="section rsvp" id="confirmar">
   <div class="container rsvp-grid">
     <div>
-      <span class="section-label">Bora?</span>
-      <h2>Garanta sua vaga na carreta</h2>
-      <p class="section-intro">Leva menos de um minuto. A carreta tem 30 lugares e as confirmações fecham assim que completar.</p>
+      <span class="section-label">Lista da carreta</span>
+      <h2>Garanta sua vaga</h2>
+      <p class="section-intro">Coloca seu nome na lista. Quando os 30 lugares forem preenchidos, as confirmações fecham na hora.</p>
       <div class="vagas-meter">
         <div class="vagas-meter-top">
           <span class="vagas-meter-num" data-vagas-num>--</span>
-          <span class="vagas-meter-label">vagas restantes<br>de 30</span>
+          <span class="vagas-meter-label">vagas livres<br>de 30</span>
         </div>
-        <div class="vagas-bar"><span id="vagasBar"></span></div>
+        <div class="vagas-bar" id="vagasBar" aria-hidden="true"></div>
       </div>
     </div>
 
     <div class="form-card" id="formCard">
       <div class="soldout" id="soldout" role="status">
-        <div class="soldout-emoji">🔒</div>
-        <h3>Vagas esgotadas!</h3>
-        <p>Os 30 lugares da Carreta Furacão já foram preenchidos. Obrigada pelo carinho, nos vemos nas próximas! 💖</p>
-        <a href="https://instagram.com/luannetrotta" target="_blank" rel="noopener" class="btn-ig">Acompanhar no @luannetrotta</a>
+        <div class="soldout-icon"><svg class="icon"><use href="#i-lock"/></svg></div>
+        <h3>Vagas esgotadas</h3>
+        <p>Os 30 lugares da Carreta Furacão já foram preenchidos. Obrigada pelo carinho, nos vemos nas próximas!</p>
+        <a href="https://instagram.com/luannetrotta" target="_blank" rel="noopener" class="btn-ig"><svg class="icon"><use href="#i-ig"/></svg> @luannetrotta</a>
       </div>
 
-      <form id="rsvpForm" novalidate>
-        <p class="form-title">Minha vaga 🎟️</p>
-        <div class="form-error" id="formError" role="alert"></div>
-        <div class="form-row">
-          <label for="nome">Nome completo</label>
-          <input type="text" id="nome" name="nome" autocomplete="name" maxlength="120" required>
-        </div>
-        <div class="form-row">
-          <label for="instagram">Seu Instagram</label>
-          <div class="at-wrap">
-            <span>@</span>
-            <input type="text" id="instagram" name="instagram" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="seuusuario" maxlength="60" required>
+      <div id="formWrap">
+        <div class="form-stub"><span>Entrada · <b>Carreta Furacão</b></span><span class="stub-date">Qua 21.10 · 20h</span></div>
+        <div class="form-cut"></div>
+        <form class="form-inner" id="rsvpForm" novalidate>
+          <p class="form-title">Seu nome na lista</p>
+          <div class="form-error" id="formError" role="alert"></div>
+          <div class="form-row">
+            <label for="nome">Nome completo</label>
+            <input type="text" id="nome" name="nome" autocomplete="name" maxlength="120" required>
           </div>
-        </div>
-        <div class="form-row">
-          <label for="whatsapp">WhatsApp</label>
-          <input type="tel" id="whatsapp" name="whatsapp" autocomplete="tel" inputmode="tel" placeholder="(00) 00000-0000" maxlength="20" required>
-        </div>
-        <div class="form-row">
-          <label for="cidade">Cidade</label>
-          <input type="text" id="cidade" name="cidade" autocomplete="address-level2" maxlength="80" required>
-        </div>
-        <div class="form-row">
-          <label for="observacao">Recado pra Luanne <span class="opt">(opcional)</span></label>
-          <textarea id="observacao" name="observacao" maxlength="600" placeholder="Algum aviso ou só um recado carinhoso..."></textarea>
-        </div>
-        <button type="submit" class="form-submit" id="submitBtn">Garantir minha vaga 🎉</button>
-        <p class="form-note">Seus dados são usados só para a organização da festa.</p>
-      </form>
+          <div class="form-row">
+            <label for="instagram">Seu Instagram</label>
+            <div class="at-wrap">
+              <span>@</span>
+              <input type="text" id="instagram" name="instagram" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="seuusuario" maxlength="60" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="whatsapp">WhatsApp</label>
+            <input type="tel" id="whatsapp" name="whatsapp" autocomplete="tel" inputmode="tel" placeholder="(00) 00000-0000" maxlength="20" required>
+          </div>
+          <div class="form-row">
+            <label for="cidade">Cidade</label>
+            <input type="text" id="cidade" name="cidade" autocomplete="address-level2" maxlength="80" required>
+          </div>
+          <div class="form-row">
+            <label for="observacao">Recado pra Luanne <span class="opt">(opcional)</span></label>
+            <textarea id="observacao" name="observacao" maxlength="600"></textarea>
+          </div>
+          <button type="submit" class="form-submit" id="submitBtn"><span>Confirmar minha vaga</span> <svg class="icon"><use href="#i-arrow"/></svg></button>
+          <p class="form-note">Seus dados são usados só para a organização da festa.</p>
+        </form>
+      </div>
 
       <div class="success" id="success" role="status">
-        <div class="success-art"><img src="/convite/carreta-furacao.webp" alt="Carreta Furacão" width="1067" height="1100"></div>
-        <p class="success-kicker">Uhuul, é festa!</p>
-        <h3>Lugar na carreta garantido!</h3>
-        <p>Te espero na <strong>Praça das Corujas</strong> na <strong>quarta, 21/10</strong>. A carreta sai às <strong>20h em ponto</strong>, chega antes!</p>
-        <a href="https://instagram.com/luannetrotta" target="_blank" rel="noopener" class="btn-ig">Acompanhar no @luannetrotta</a>
+        <div class="pass-top">
+          <img src="/convite/carreta-furacao.webp" alt="" width="1067" height="1100">
+          <div class="pass-top-text">
+            <span class="pass-kicker"><svg class="icon"><use href="#i-check"/></svg> Vaga confirmada</span>
+            <p class="pass-num">Nº <b id="passNum">--</b><span>/30</span></p>
+            <p class="pass-event">Festa dos 300 mil</p>
+          </div>
+        </div>
+        <div class="pass-cut"></div>
+        <div class="pass-body">
+          <p class="pass-label">Nome na lista</p>
+          <p class="pass-name" id="passName"></p>
+          <p class="pass-ig" id="passIg"></p>
+          <div class="pass-grid">
+            <div><span class="pass-label">Data</span><b>Qua 21.10</b></div>
+            <div><span class="pass-label">Saída</span><b>20h</b></div>
+            <div><span class="pass-label">Embarque</span><b>Praça das Corujas</b></div>
+          </div>
+          <div class="barcode" id="barcode" aria-hidden="true"></div>
+          <p class="barcode-id" id="barcodeId"></p>
+          <p class="pass-hint"><svg class="icon"><use href="#i-camera"/></svg> Tira um print e mostra no embarque</p>
+          <div class="pass-actions">
+            <a href="https://instagram.com/luannetrotta" target="_blank" rel="noopener" class="btn-ig"><svg class="icon"><use href="#i-ig"/></svg> Acompanhar a @luannetrotta</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -875,7 +1255,7 @@ a{color:inherit;text-decoration:none;}
 <footer class="footer">
   <div class="container footer-inner">
     <span>Luanne Trotta × Carreta Furacão · Festa dos 300 Mil</span>
-    <a href="https://instagram.com/luannetrotta" target="_blank" rel="noopener">@luannetrotta</a>
+    <a href="https://instagram.com/luannetrotta" target="_blank" rel="noopener"><svg class="icon"><use href="#i-ig"/></svg> @luannetrotta</a>
   </div>
 </footer>
 
@@ -887,7 +1267,7 @@ const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matc
 (function(){
   if(reducedMotion) return;
   const box = document.getElementById('confetti');
-  const n = window.innerWidth < 600 ? 26 : 46;
+  const n = window.innerWidth < 600 ? 24 : 42;
   for(let i = 0; i < n; i++){
     const c = document.createElement('i');
     c.style.left = Math.random() * 100 + 'vw';
@@ -895,51 +1275,69 @@ const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matc
     c.style.setProperty('--drift', (Math.random() * 120 - 60) + 'px');
     c.style.animationDuration = (7 + Math.random() * 8) + 's';
     c.style.animationDelay = (-Math.random() * 15) + 's';
-    if(i % 3 === 0){ c.style.width = '8px'; c.style.height = '8px'; c.style.borderRadius = '50%'; }
+    if(i % 4 === 0) c.className = 'star';
+    else if(i % 3 === 0){ c.style.width = '8px'; c.style.height = '8px'; c.style.borderRadius = '50%'; }
     box.appendChild(c);
   }
 })();
 
-// Contagem regressiva até a saída da carreta (quarta, 21/10, 20h, horário de Brasília)
+// Painel: contagem regressiva até a saída (quarta, 21/10, 20h, horário de Brasília)
 (function(){
   const saida = new Date('2026-10-21T20:00:00-03:00').getTime();
-  const el = id => document.getElementById(id);
   const pad = v => String(v).padStart(2, '0');
+  const units = {};
+  document.querySelectorAll('.flip-digits').forEach(el => { units[el.dataset.unit] = el.querySelectorAll('b'); });
+  function setUnit(key, value){
+    const s = pad(value);
+    units[key].forEach((b, i) => {
+      if(b.textContent !== s[i]){
+        b.textContent = s[i];
+        if(!reducedMotion){ b.classList.remove('tick'); void b.offsetWidth; b.classList.add('tick'); }
+      }
+    });
+  }
   function tick(){
     const diff = saida - Date.now();
     if(diff <= 0){
-      document.getElementById('countdown').innerHTML = '<p class="countdown-done">A carreta já saiu! 🚚💨</p>';
+      document.getElementById('countdown').innerHTML = '<p class="board-gone">Carreta em rota</p>';
       return;
     }
     const s = Math.floor(diff / 1000);
-    el('cd-d').textContent = pad(Math.floor(s / 86400));
-    el('cd-h').textContent = pad(Math.floor(s % 86400 / 3600));
-    el('cd-m').textContent = pad(Math.floor(s % 3600 / 60));
-    el('cd-s').textContent = pad(s % 60);
+    setUnit('h', Math.min(Math.floor(s / 3600), 99));
+    setUnit('m', Math.floor(s % 3600 / 60));
+    setUnit('s', s % 60);
     setTimeout(tick, 1000);
   }
   tick();
 })();
 
-// Vagas + confirmação -> Supabase (chave pública; a tabela só aceita insert, sem leitura)
+// Vagas + confirmação -> Supabase (chave pública; só dá pra confirmar e ver o total de vagas)
 const SUPABASE_URL = 'https://jrvmjokalrqojuilepkb.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_jdqabUL5E4afOVSfr-7gbA_2qdcxyMs';
 const TOTAL_VAGAS = 30;
 
 const form = document.getElementById('rsvpForm');
+const formWrap = document.getElementById('formWrap');
 const errorBox = document.getElementById('formError');
 const submitBtn = document.getElementById('submitBtn');
+const submitLabel = submitBtn.querySelector('span');
 const soldout = document.getElementById('soldout');
+const bar = document.getElementById('vagasBar');
 let confirmado = false;
+
+for(let i = 0; i < TOTAL_VAGAS; i++) bar.appendChild(document.createElement('i'));
 
 function renderVagas(n){
   document.querySelectorAll('[data-vagas-num]').forEach(el => { el.textContent = n; });
   document.querySelectorAll('[data-vagas-text]').forEach(el => {
-    el.textContent = n === 0 ? 'Vagas esgotadas' : n === 1 ? 'Resta só 1 vaga!' : 'Restam ' + n + ' de ' + TOTAL_VAGAS + ' vagas';
+    el.textContent = n === 0 ? 'Vagas esgotadas' : n === 1 ? 'Resta só 1 vaga' : 'Restam ' + n + ' de ' + TOTAL_VAGAS + ' vagas';
   });
-  document.getElementById('vagasBar').style.width = ((TOTAL_VAGAS - n) / TOTAL_VAGAS * 100) + '%';
+  document.querySelectorAll('[data-vagas-board]').forEach(el => {
+    el.textContent = n === 0 ? 'Lotada' : n + (n === 1 ? ' livre' : ' livres') + ' de ' + TOTAL_VAGAS;
+  });
+  bar.querySelectorAll('i').forEach((el, i) => el.classList.toggle('on', i < TOTAL_VAGAS - n));
   if(n === 0 && !confirmado){
-    form.style.display = 'none';
+    formWrap.style.display = 'none';
     soldout.classList.add('show');
   }
 }
@@ -976,11 +1374,32 @@ function confettiBurst(){
   }
 }
 
-function showSuccess(){
+// Código de barras decorativo gerado a partir do @, igual pra mesma pessoa
+function drawBarcode(seed){
+  let h = 2166136261;
+  for(const ch of seed){ h ^= ch.charCodeAt(0); h = Math.imul(h, 16777619); }
+  const rand = () => { h ^= h << 13; h ^= h >>> 17; h ^= h << 5; return (h >>> 0) / 4294967296; };
+  const box = document.getElementById('barcode');
+  box.innerHTML = '';
+  for(let i = 0; i < 46; i++){
+    const b = document.createElement('i');
+    b.style.width = (1 + Math.floor(rand() * 4)) + 'px';
+    b.style.marginRight = Math.floor(rand() * 3) + 'px';
+    box.appendChild(b);
+  }
+  box.style.justifyContent = 'center';
+  return (h >>> 0).toString(36).toUpperCase().padStart(7, '0').slice(0, 7);
+}
+
+function showSuccess(numero, nome, instagram){
   confirmado = true;
-  form.style.display = 'none';
+  formWrap.style.display = 'none';
+  document.getElementById('passNum').textContent = String(numero).padStart(2, '0');
+  document.getElementById('passName').textContent = nome;
+  document.getElementById('passIg').textContent = '@' + instagram;
+  document.getElementById('barcodeId').textContent = 'CF300 · ' + drawBarcode(instagram) + ' · ' + String(numero).padStart(2, '0');
   document.getElementById('success').classList.add('show');
-  document.getElementById('formCard').scrollIntoView({behavior:'smooth', block:'center'});
+  document.getElementById('formCard').scrollIntoView({behavior:'smooth', block:'start'});
   confettiBurst();
 }
 
@@ -1000,7 +1419,7 @@ form.addEventListener('submit', async function(e){
   e.preventDefault();
   errorBox.classList.remove('show');
 
-  const nome = document.getElementById('nome').value.trim();
+  const nome = document.getElementById('nome').value.trim().replace(/\s+/g, ' ');
   const instagram = normalizeInstagram(document.getElementById('instagram').value);
   const whatsapp = document.getElementById('whatsapp').value.replace(/\D/g, '');
   const cidade = document.getElementById('cidade').value.trim();
@@ -1012,25 +1431,23 @@ form.addEventListener('submit', async function(e){
   if(cidade.length < 2) return showError('Preencha sua cidade.');
 
   submitBtn.disabled = true;
-  submitBtn.textContent = 'Enviando...';
+  submitLabel.textContent = 'Enviando...';
 
   try{
-    const res = await fetch(SUPABASE_URL + '/rest/v1/inscricoes_convite', {
+    const res = await fetch(SUPABASE_URL + '/rest/v1/rpc/confirmar_vaga', {
       method:'POST',
-      headers:{
-        'apikey':SUPABASE_KEY,
-        'Content-Type':'application/json',
-        'Prefer':'return=minimal'
-      },
+      headers:{ 'apikey':SUPABASE_KEY, 'Content-Type':'application/json' },
       body:JSON.stringify({
-        nome, instagram, whatsapp, cidade,
-        vai_de_carreta: true,
-        observacao: observacao || null
+        p_nome: nome,
+        p_instagram: instagram,
+        p_whatsapp: whatsapp,
+        p_cidade: cidade,
+        p_observacao: observacao || null
       })
     });
 
     if(res.status === 409){
-      throw new Error('Esse @ já garantiu a vaga! Se precisar mudar algo, fala direto com a equipe da Luanne.');
+      throw new Error('Esse @ já está na lista! Se precisar mudar algo, fala direto com a equipe da Luanne.');
     }
     if(!res.ok){
       const body = await res.json().catch(() => ({}));
@@ -1041,13 +1458,14 @@ form.addEventListener('submit', async function(e){
       throw new Error('Não conseguimos enviar agora. Tenta de novo em instantes.');
     }
 
-    showSuccess();
+    const numero = await res.json();
+    showSuccess(numero, nome, instagram);
     carregarVagas();
   }catch(err){
     showError(err.message && !/fetch/i.test(err.message) ? err.message : 'Sem conexão. Confere sua internet e tenta de novo.');
   }finally{
     submitBtn.disabled = false;
-    submitBtn.textContent = 'Garantir minha vaga 🎉';
+    submitLabel.textContent = 'Confirmar minha vaga';
   }
 });
 </script>
