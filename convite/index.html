@@ -5,16 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Festa dos 300 Mil — Convite</title>
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Você foi convidado(a) pra Festa dos 300 Mil da Luanne Trotta. Confirme sua presença na Carreta Furacão.">
-<meta property="og:title" content="Você foi convidado(a) pra Festa dos 300 Mil!">
-<meta property="og:description" content="Confirme se você vai de Carreta Furacão. Embarque na Praça das Corujas, quarta às 20h.">
-<meta property="og:image" content="https://www.luannetrotta.com/convite/luanne.jpg">
+<meta name="description" content="Você foi convidado(a) pra Festa dos 300 Mil da Luanne Trotta. Garanta sua vaga na Carreta Furacão.">
+<meta property="og:title" content="Você foi convidado(a) pra Festa dos 300 Mil! 🎉">
+<meta property="og:description" content="30 vagas na Carreta Furacão. Embarque na Praça das Corujas, quarta às 20h. Garanta a sua!">
+<meta property="og:image" content="https://www.luannetrotta.com/convite/og-carreta.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="1200">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#12051F">
 <link rel="icon" href="/convite/favicon.png" type="image/png">
+<link rel="preload" as="image" href="/convite/carreta-furacao.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Pacifico&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   --night:#12051F;
@@ -27,7 +30,8 @@
   --orange:#FF7A2F;
   --violet:#8B5CF6;
   --font-party:'Bungee', cursive;
-  --font-body:'Space Grotesk', sans-serif;
+  --font-script:'Pacifico', cursive;
+  --font-body:'Outfit', sans-serif;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -47,7 +51,7 @@ img{max-width:100%;display:block;}
 a{color:inherit;text-decoration:none;}
 
 .container{
-  max-width:1040px;
+  max-width:1080px;
   margin:0 auto;
   padding:0 18px;
 }
@@ -89,12 +93,12 @@ a{color:inherit;text-decoration:none;}
 /* ===== HERO ===== */
 .hero{
   position:relative;
-  padding:40px 0 64px;
+  padding:26px 0 60px;
   overflow:hidden;
   background:
-    radial-gradient(60% 50% at 15% 10%, rgba(255,61,165,0.35) 0%, transparent 70%),
-    radial-gradient(50% 45% at 90% 20%, rgba(46,230,214,0.25) 0%, transparent 70%),
-    radial-gradient(70% 60% at 50% 100%, rgba(139,92,246,0.35) 0%, transparent 70%),
+    radial-gradient(60% 50% at 10% 15%, rgba(255,61,165,0.32) 0%, transparent 70%),
+    radial-gradient(50% 45% at 92% 30%, rgba(46,230,214,0.22) 0%, transparent 70%),
+    radial-gradient(70% 60% at 50% 100%, rgba(139,92,246,0.4) 0%, transparent 70%),
     var(--night);
 }
 .hero .container{position:relative;z-index:2;}
@@ -103,50 +107,56 @@ a{color:inherit;text-decoration:none;}
   display:flex;
   align-items:center;
   justify-content:space-between;
-  margin-bottom:40px;
+  margin-bottom:34px;
 }
 .top-logo{height:30px;width:auto;filter:brightness(0) invert(1);}
-.handle{
+.host-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:4px 14px 4px 4px;
+  border-radius:100px;
+  background:rgba(255,248,240,0.08);
+  border:1.5px solid rgba(255,248,240,0.2);
   font-size:13px;
   font-weight:700;
   color:var(--yellow);
 }
+.host-chip img{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid var(--pink);}
 
 .hero-grid{
   display:grid;
-  grid-template-columns:1.1fr 0.9fr;
-  gap:44px;
+  grid-template-columns:1.05fr 0.95fr;
+  grid-template-areas:
+    "head art"
+    "body art";
+  column-gap:40px;
   align-items:center;
 }
+.hero-head{grid-area:head;align-self:end;}
+.hero-art{grid-area:art;}
+.hero-body{grid-area:body;align-self:start;}
 
-.tag{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  border:2px solid var(--yellow);
+.script-line{
+  display:inline-block;
+  font-family:var(--font-script);
+  font-size:clamp(1.6rem, 4.6vw, 2.3rem);
   color:var(--yellow);
-  padding:7px 16px;
-  border-radius:100px;
-  font-size:12.5px;
-  font-weight:700;
-  letter-spacing:0.12em;
-  margin-bottom:20px;
-  text-transform:uppercase;
+  transform:rotate(-4deg);
+  margin-bottom:8px;
+  text-shadow:0 0 18px rgba(255,210,63,0.45);
 }
-.tag .spark{animation:spin 3s linear infinite;display:inline-block;}
-@keyframes spin{to{transform:rotate(360deg);}}
 
 .hero h1{
   font-family:var(--font-party);
   font-weight:400;
-  font-size:clamp(2.3rem, 7.4vw, 4.3rem);
-  line-height:1.02;
-  margin-bottom:18px;
+  font-size:clamp(2.2rem, 6.6vw, 3.9rem);
+  line-height:1;
   text-transform:uppercase;
 }
 .hero h1 .big{
   display:block;
-  font-size:1.55em;
+  font-size:1.62em;
   line-height:0.95;
   background:linear-gradient(95deg, var(--yellow) 0%, var(--orange) 35%, var(--pink) 70%, var(--violet) 100%);
   -webkit-background-clip:text;
@@ -154,17 +164,23 @@ a{color:inherit;text-decoration:none;}
   color:transparent;
   filter:drop-shadow(0 0 22px rgba(255,61,165,0.45));
 }
-.hero h1 .neon{
+.hero h1 .via{
+  display:block;
+  font-family:var(--font-script);
+  text-transform:none;
+  font-size:0.72em;
+  line-height:1.3;
+  margin-top:6px;
   color:var(--cyan);
   text-shadow:0 0 10px rgba(46,230,214,0.8), 0 0 30px rgba(46,230,214,0.45);
 }
 
 .hero-sub{
-  font-size:17px;
+  font-size:18px;
   line-height:1.6;
-  color:rgba(255,248,240,0.82);
+  color:rgba(255,248,240,0.85);
   max-width:480px;
-  margin-bottom:26px;
+  margin:20px 0 26px;
 }
 .hero-sub strong{color:var(--yellow);}
 
@@ -176,8 +192,8 @@ a{color:inherit;text-decoration:none;}
   color:var(--ink);
   padding:17px 30px;
   border-radius:100px;
-  font-weight:700;
-  font-size:16px;
+  font-weight:800;
+  font-size:17px;
   border:2px solid var(--ink);
   box-shadow:0 6px 0 var(--pink), 0 0 30px rgba(255,210,63,0.35);
   transition:transform 0.15s, box-shadow 0.15s;
@@ -185,20 +201,170 @@ a{color:inherit;text-decoration:none;}
 .btn-party:hover{transform:translateY(2px);box-shadow:0 4px 0 var(--pink), 0 0 30px rgba(255,210,63,0.35);}
 .btn-party:active{transform:translateY(6px);box-shadow:0 0 0 var(--pink);}
 
-/* ticket */
+.vagas-pill{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-top:18px;
+  font-size:15px;
+  font-weight:700;
+  color:var(--yellow);
+}
+.vagas-dot{
+  width:9px;height:9px;
+  border-radius:50%;
+  background:var(--pink);
+  animation:pulse-pink 1.4s ease-in-out infinite;
+}
+@keyframes pulse-pink{
+  0%,100%{box-shadow:0 0 0 0 rgba(255,61,165,0.7);}
+  50%{box-shadow:0 0 0 7px rgba(255,61,165,0);}
+}
+
+/* carreta flutuando */
+.art-wrap{
+  position:relative;
+  width:100%;
+  max-width:500px;
+  margin:0 auto;
+  aspect-ratio:1067/1100;
+}
+.art-wrap::before{
+  content:'';
+  position:absolute;
+  inset:8% 6%;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(255,61,165,0.55) 0%, rgba(139,92,246,0.35) 45%, transparent 70%);
+  filter:blur(30px);
+  animation:glow 3.2s ease-in-out infinite;
+}
+@keyframes glow{
+  0%,100%{opacity:0.75;transform:scale(0.95);}
+  50%{opacity:1;transform:scale(1.05);}
+}
+.art-wrap img{
+  position:relative;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  animation:float 4s ease-in-out infinite;
+  filter:drop-shadow(0 24px 30px rgba(0,0,0,0.45));
+}
+@keyframes float{
+  0%,100%{transform:translateY(0) rotate(-1.5deg);}
+  50%{transform:translateY(-14px) rotate(1.5deg);}
+}
+
+@media (max-width:860px){
+  .hero{padding:20px 0 52px;}
+  .top-bar{margin-bottom:24px;}
+  .hero-grid{
+    grid-template-columns:1fr;
+    grid-template-areas:
+      "head"
+      "art"
+      "body";
+  }
+  .hero-head{text-align:center;}
+  .art-wrap{max-width:360px;margin:18px auto 0;}
+  .hero-body{text-align:center;}
+  .hero-sub{margin:18px auto 24px;}
+  .vagas-pill{justify-content:center;}
+}
+
+/* ===== COUNTDOWN ===== */
+.countdown-strip{
+  position:relative;
+  z-index:2;
+  background:linear-gradient(95deg, var(--pink) 0%, var(--violet) 50%, var(--cyan) 100%);
+  padding:22px 0;
+  text-align:center;
+}
+.countdown-label{
+  font-family:var(--font-script);
+  font-size:22px;
+  margin-bottom:10px;
+  color:var(--cream);
+}
+.countdown{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+}
+.cd-box{
+  background:rgba(18,5,31,0.55);
+  border:2px solid rgba(255,248,240,0.35);
+  border-radius:16px;
+  min-width:74px;
+  padding:10px 8px 8px;
+}
+.cd-box b{
+  display:block;
+  font-family:var(--font-party);
+  font-weight:400;
+  font-size:30px;
+  line-height:1;
+  color:var(--yellow);
+}
+.cd-box span{font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;opacity:0.9;}
+.countdown-done{
+  font-family:var(--font-party);
+  font-size:22px;
+  color:var(--yellow);
+}
+@media (max-width:400px){
+  .countdown{gap:8px;}
+  .cd-box{min-width:64px;}
+  .cd-box b{font-size:24px;}
+}
+
+/* ===== SECTIONS ===== */
+.section{padding:72px 0;position:relative;z-index:2;}
+.section-label{
+  display:inline-block;
+  font-family:var(--font-script);
+  font-size:22px;
+  color:var(--pink);
+  margin-bottom:6px;
+}
+.section h2{
+  font-family:var(--font-party);
+  font-weight:400;
+  font-size:clamp(1.6rem, 4.6vw, 2.4rem);
+  line-height:1.1;
+  margin-bottom:14px;
+  max-width:640px;
+  text-transform:uppercase;
+}
+.section-intro{
+  font-size:17px;
+  color:rgba(255,248,240,0.78);
+  max-width:560px;
+  line-height:1.6;
+}
+
+/* ===== INGRESSO + INFO ===== */
+.info-layout{
+  display:grid;
+  grid-template-columns:0.8fr 1.2fr;
+  gap:44px;
+  align-items:center;
+  margin-top:36px;
+}
+
 .ticket{
   position:relative;
-  max-width:330px;
+  max-width:320px;
   margin:0 auto;
   background:var(--cream);
   color:var(--ink);
   border-radius:24px;
-  transform:rotate(3deg);
+  transform:rotate(-3deg);
   box-shadow:0 0 0 3px var(--pink), 0 0 50px rgba(255,61,165,0.45), 0 30px 60px -20px rgba(0,0,0,0.7);
 }
 .ticket-photo{
   position:relative;
-  aspect-ratio:4/4.4;
+  aspect-ratio:4/4.3;
   border-radius:24px 24px 0 0;
   overflow:hidden;
   background:linear-gradient(160deg, var(--pink), var(--violet));
@@ -232,18 +398,23 @@ a{color:inherit;text-decoration:none;}
 }
 .ticket-cut::before{left:-38px;}
 .ticket-cut::after{right:-38px;}
-.ticket-body{padding:16px 22px 20px;}
+.ticket-body{padding:14px 22px 20px;}
+.ticket-sign{
+  font-family:var(--font-script);
+  font-size:15px;
+  color:var(--pink);
+}
 .ticket-title{
   font-family:var(--font-party);
   font-size:20px;
   line-height:1.1;
-  margin-bottom:10px;
+  margin:2px 0 10px;
 }
 .ticket-row{
   display:flex;
   justify-content:space-between;
   gap:10px;
-  font-size:12px;
+  font-size:11.5px;
   font-weight:700;
   text-transform:uppercase;
   letter-spacing:0.06em;
@@ -251,102 +422,19 @@ a{color:inherit;text-decoration:none;}
 }
 .ticket-row b{display:block;font-size:15px;color:var(--ink);letter-spacing:0;text-transform:none;margin-top:2px;}
 
-@media (max-width:860px){
-  .hero{padding:28px 0 56px;}
-  .top-bar{margin-bottom:28px;}
-  .hero-grid{grid-template-columns:1fr;gap:40px;}
-  .ticket{max-width:290px;}
-}
-
-/* ===== COUNTDOWN ===== */
-.countdown-strip{
-  position:relative;
-  z-index:2;
-  background:linear-gradient(95deg, var(--pink) 0%, var(--violet) 50%, var(--cyan) 100%);
-  padding:22px 0;
-  text-align:center;
-}
-.countdown-label{
-  font-size:12.5px;
-  font-weight:700;
-  letter-spacing:0.14em;
-  text-transform:uppercase;
-  margin-bottom:10px;
-  color:var(--cream);
-}
-.countdown{
-  display:flex;
-  justify-content:center;
-  gap:12px;
-}
-.cd-box{
-  background:rgba(18,5,31,0.55);
-  border:2px solid rgba(255,248,240,0.35);
-  border-radius:16px;
-  min-width:74px;
-  padding:10px 8px 8px;
-}
-.cd-box b{
-  display:block;
-  font-family:var(--font-party);
-  font-weight:400;
-  font-size:30px;
-  line-height:1;
-  color:var(--yellow);
-}
-.cd-box span{font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;opacity:0.85;}
-.countdown-done{
-  font-family:var(--font-party);
-  font-size:22px;
-  color:var(--yellow);
-}
-@media (max-width:400px){
-  .countdown{gap:8px;}
-  .cd-box{min-width:64px;}
-  .cd-box b{font-size:24px;}
-}
-
-/* ===== SECTIONS ===== */
-.section{padding:72px 0;position:relative;z-index:2;}
-.section-label{
-  display:inline-block;
-  font-family:var(--font-party);
-  font-size:13px;
-  letter-spacing:0.06em;
-  color:var(--pink);
-  margin-bottom:12px;
-}
-.section h2{
-  font-family:var(--font-party);
-  font-weight:400;
-  font-size:clamp(1.6rem, 4.6vw, 2.4rem);
-  line-height:1.1;
-  margin-bottom:14px;
-  max-width:640px;
-  text-transform:uppercase;
-}
-.section-intro{
-  font-size:16px;
-  color:rgba(255,248,240,0.75);
-  max-width:560px;
-  line-height:1.6;
-}
-
-/* info cards */
 .info-grid{
   display:grid;
-  grid-template-columns:repeat(4, 1fr);
-  gap:16px;
-  margin-top:36px;
+  grid-template-columns:repeat(2, 1fr);
+  gap:14px;
 }
 .info-card{
   border-radius:22px;
-  padding:22px 18px;
+  padding:20px 18px;
   background:rgba(255,248,240,0.05);
   border:2px solid var(--c);
   box-shadow:0 0 24px -6px var(--c);
 }
-.info-emoji{font-size:30px;margin-bottom:12px;line-height:1;}
+.info-emoji{font-size:28px;margin-bottom:10px;line-height:1;}
 .info-card .k{
   font-size:12px;
   font-weight:700;
@@ -360,28 +448,34 @@ a{color:inherit;text-decoration:none;}
   font-size:19px;
   line-height:1.15;
 }
-@media (max-width:900px){.info-grid{grid-template-columns:repeat(2,1fr);}}
-@media (max-width:400px){
-  .info-grid{gap:10px;}
-  .info-card{padding:16px 12px;}
-  .info-card .v{font-size:16px;}
-}
 
 .notes{
-  margin-top:28px;
+  margin-top:22px;
   display:grid;
   gap:10px;
-  max-width:640px;
 }
 .note{
   display:flex;
   gap:12px;
   align-items:flex-start;
-  font-size:15px;
+  font-size:16px;
   line-height:1.5;
-  color:rgba(255,248,240,0.85);
+  color:rgba(255,248,240,0.88);
 }
-.note span:first-child{font-size:18px;line-height:1.3;}
+.note span:first-child{font-size:18px;line-height:1.35;}
+
+@media (max-width:860px){
+  .info-layout{grid-template-columns:1fr;gap:40px;}
+  .ticket{max-width:290px;}
+  .ticket-body{padding:14px 18px 18px;}
+  .ticket-row{gap:8px;font-size:10.5px;}
+  .ticket-row b{font-size:13.5px;white-space:nowrap;}
+}
+@media (max-width:400px){
+  .info-grid{gap:10px;}
+  .info-card{padding:16px 12px;}
+  .info-card .v{font-size:16px;}
+}
 
 /* ===== FORM ===== */
 .rsvp{
@@ -396,75 +490,7 @@ a{color:inherit;text-decoration:none;}
   gap:44px;
   align-items:start;
 }
-.form-card{
-  background:var(--cream);
-  color:var(--ink);
-  border-radius:26px;
-  padding:30px;
-  box-shadow:0 0 0 3px var(--yellow), 0 0 50px -10px rgba(255,210,63,0.5);
-}
-.form-title{
-  font-family:var(--font-party);
-  font-size:22px;
-  margin-bottom:18px;
-}
-.form-row{margin-bottom:15px;}
-.form-row > label,
-.form-legend{
-  display:block;
-  font-size:13px;
-  font-weight:700;
-  margin-bottom:7px;
-  letter-spacing:0.02em;
-}
-.form-row .opt{font-weight:500;color:rgba(23,19,17,0.5);}
-.form-row input[type=text],
-.form-row input[type=tel],
-.form-row textarea{
-  width:100%;
-  padding:13px 16px;
-  border-radius:12px;
-  border:2px solid rgba(23,19,17,0.12);
-  background:#FFF1E2;
-  font-family:var(--font-body);
-  font-size:16px;
-  color:var(--ink);
-  transition:border-color 0.2s;
-}
-.form-row input:focus,
-.form-row textarea:focus{border-color:var(--pink);outline:none;}
-.form-row textarea{resize:vertical;min-height:76px;}
-.at-wrap{position:relative;}
-.at-wrap span{
-  position:absolute;
-  left:16px;top:50%;
-  transform:translateY(-50%);
-  font-weight:700;
-  color:rgba(23,19,17,0.45);
-  pointer-events:none;
-}
-.at-wrap input[type=text]{padding-left:34px;}
 
-/* vagas */
-.vagas-pill{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  margin-top:18px;
-  font-size:14px;
-  font-weight:700;
-  color:var(--yellow);
-}
-.vagas-dot{
-  width:9px;height:9px;
-  border-radius:50%;
-  background:var(--pink);
-  animation:pulse-pink 1.4s ease-in-out infinite;
-}
-@keyframes pulse-pink{
-  0%,100%{box-shadow:0 0 0 0 rgba(255,61,165,0.7);}
-  50%{box-shadow:0 0 0 7px rgba(255,61,165,0);}
-}
 .vagas-meter{
   margin-top:26px;
   max-width:340px;
@@ -488,7 +514,7 @@ a{color:inherit;text-decoration:none;}
   font-weight:700;
   letter-spacing:0.06em;
   text-transform:uppercase;
-  color:rgba(255,248,240,0.75);
+  color:rgba(255,248,240,0.78);
   line-height:1.35;
 }
 .vagas-bar{
@@ -506,11 +532,52 @@ a{color:inherit;text-decoration:none;}
   transition:width 0.8s ease;
 }
 
-.soldout{display:none;text-align:center;padding:10px 0;}
-.soldout.show{display:block;}
-.soldout-emoji{font-size:54px;line-height:1;margin-bottom:12px;}
-.soldout h3{font-family:var(--font-party);font-weight:400;font-size:24px;margin-bottom:10px;}
-.soldout p{font-size:15px;line-height:1.6;color:rgba(23,19,17,0.78);}
+.form-card{
+  position:relative;
+  background:var(--cream);
+  color:var(--ink);
+  border-radius:26px;
+  padding:30px;
+  box-shadow:0 0 0 3px var(--yellow), 0 0 50px -10px rgba(255,210,63,0.5);
+}
+.form-title{
+  font-family:var(--font-party);
+  font-size:22px;
+  margin-bottom:18px;
+}
+.form-row{margin-bottom:15px;}
+.form-row > label{
+  display:block;
+  font-size:14px;
+  font-weight:700;
+  margin-bottom:7px;
+}
+.form-row .opt{font-weight:500;color:rgba(23,19,17,0.5);}
+.form-row input,
+.form-row textarea{
+  width:100%;
+  padding:13px 16px;
+  border-radius:12px;
+  border:2px solid rgba(23,19,17,0.12);
+  background:#FFF1E2;
+  font-family:var(--font-body);
+  font-size:16px;
+  color:var(--ink);
+  transition:border-color 0.2s;
+}
+.form-row input:focus,
+.form-row textarea:focus{border-color:var(--pink);outline:none;}
+.form-row textarea{resize:vertical;min-height:76px;}
+.at-wrap{position:relative;}
+.at-wrap span{
+  position:absolute;
+  left:16px;top:50%;
+  transform:translateY(-50%);
+  font-weight:700;
+  color:rgba(23,19,17,0.45);
+  pointer-events:none;
+}
+.at-wrap input{padding-left:34px;}
 
 .form-submit{
   width:100%;
@@ -520,8 +587,8 @@ a{color:inherit;text-decoration:none;}
   padding:17px;
   border-radius:100px;
   font-family:var(--font-body);
-  font-weight:700;
-  font-size:16px;
+  font-weight:800;
+  font-size:17px;
   cursor:pointer;
   box-shadow:0 6px 0 var(--ink);
   transition:transform 0.15s, box-shadow 0.15s, opacity 0.2s;
@@ -536,47 +603,49 @@ a{color:inherit;text-decoration:none;}
   color:#9B1C55;
   border-radius:12px;
   padding:12px 14px;
-  font-size:14px;
+  font-size:14.5px;
   font-weight:600;
   margin-bottom:14px;
 }
 .form-error.show{display:block;}
 .form-note{
-  font-size:12.5px;
+  font-size:13px;
   color:rgba(23,19,17,0.55);
   margin-top:12px;
   text-align:center;
 }
 
-.success{display:none;text-align:center;padding:10px 0;}
-.success.show{display:block;}
-.carreta-3d{
-  position:relative;
+.success,
+.soldout{display:none;text-align:center;padding:4px 0 8px;}
+.success.show,
+.soldout.show{display:block;}
+.success-art{
+  width:78%;
+  max-width:280px;
+  margin:-70px auto 6px;
+  animation:pop-in 0.7s cubic-bezier(.2,1.4,.4,1) both;
+}
+.success-art img{
   width:100%;
-  aspect-ratio:4/3;
-  margin:0 auto 18px;
-  border-radius:20px;
-  overflow:hidden;
-  background:
-    radial-gradient(70% 60% at 30% 30%, rgba(255,61,165,0.35) 0%, transparent 70%),
-    radial-gradient(60% 60% at 80% 80%, rgba(46,230,214,0.25) 0%, transparent 70%),
-    var(--night);
-  box-shadow:inset 0 0 0 2px rgba(23,19,17,0.9);
+  height:auto;
+  animation:float 4s ease-in-out 0.7s infinite;
+  filter:drop-shadow(0 16px 20px rgba(23,19,17,0.3));
 }
-.carreta-3d canvas{position:absolute;inset:0;width:100% !important;height:100% !important;display:block;}
-.carreta-fallback{
-  position:absolute;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:64px;
+@keyframes pop-in{
+  0%{opacity:0;transform:scale(0.3) rotate(-12deg);}
+  100%{opacity:1;transform:scale(1) rotate(0);}
 }
-.carreta-3d.live .carreta-fallback{display:none;}
-.success h3{font-family:var(--font-party);font-weight:400;font-size:24px;margin-bottom:10px;}
-.success p{font-size:15px;line-height:1.6;color:rgba(23,19,17,0.78);margin-bottom:8px;}
-.success .btn-ig,
-.soldout .btn-ig{
+.success-kicker{
+  font-family:var(--font-script);
+  font-size:22px;
+  color:var(--pink);
+}
+.success h3,
+.soldout h3{font-family:var(--font-party);font-weight:400;font-size:24px;line-height:1.15;margin:4px 0 10px;}
+.success p,
+.soldout p{font-size:16px;line-height:1.6;color:rgba(23,19,17,0.8);margin-bottom:8px;}
+.soldout-emoji{font-size:54px;line-height:1;margin-bottom:12px;}
+.btn-ig{
   display:inline-flex;
   align-items:center;
   gap:8px;
@@ -586,7 +655,21 @@ a{color:inherit;text-decoration:none;}
   padding:13px 22px;
   border-radius:100px;
   font-weight:700;
-  font-size:14.5px;
+  font-size:15px;
+}
+
+/* explosão de confete na confirmação */
+.burst{
+  position:absolute;
+  left:50%;top:22%;
+  width:10px;height:14px;
+  border-radius:2px;
+  pointer-events:none;
+  animation:burst 1.4s cubic-bezier(.15,.7,.35,1) forwards;
+}
+@keyframes burst{
+  0%{transform:translate(-50%,-50%) rotate(0);opacity:1;}
+  100%{transform:translate(calc(-50% + var(--x)), calc(-50% + var(--y))) rotate(var(--r));opacity:0;}
 }
 
 @media (max-width:860px){
@@ -609,7 +692,7 @@ a{color:inherit;text-decoration:none;}
   align-items:center;
   flex-wrap:wrap;
   gap:12px;
-  font-size:13px;
+  font-size:14px;
 }
 .footer a:hover{color:var(--yellow);}
 </style>
@@ -623,32 +706,25 @@ a{color:inherit;text-decoration:none;}
   <div class="container">
     <div class="top-bar">
       <img src="/convite/logo.png" alt="Luanne Trotta Repórter" class="top-logo">
-      <span class="handle">@luannetrotta</span>
+      <span class="host-chip"><img src="/convite/avatar.jpg" alt=""> @luannetrotta</span>
     </div>
 
     <div class="hero-grid">
-      <div>
-        <span class="tag"><span class="spark">✦</span> Convite exclusivo</span>
-        <h1>Festa dos <span class="big">300 mil</span>de <span class="neon">Carreta Furacão</span></h1>
-        <p class="hero-sub">Você foi convidado(a) pra comemorar comigo os <strong>300 mil seguidores</strong>! Em parceria com a <strong>Carreta Furacão</strong>, a gente vai junto pra festa. São só <strong>30 vagas</strong> na carreta: garanta a sua.</p>
-        <a href="#confirmar" class="btn-party">Garantir minha vaga 🎉</a>
-        <p class="vagas-pill" data-vagas-pill><span class="vagas-dot"></span> <span data-vagas-text>Carregando vagas...</span></p>
+      <div class="hero-head">
+        <span class="script-line">Esse convite é seu!</span>
+        <h1>Festa dos <span class="big">300 mil</span><span class="via">de Carreta Furacão</span></h1>
       </div>
 
-      <div class="ticket">
-        <div class="ticket-photo">
-          <img src="/convite/luanne.jpg" alt="Luanne Trotta">
-          <span class="ticket-stamp">VIP</span>
+      <div class="hero-art">
+        <div class="art-wrap">
+          <img src="/convite/carreta-furacao.webp" alt="Carreta de festa saindo de um furacão colorido" width="1067" height="1100">
         </div>
-        <div class="ticket-cut"></div>
-        <div class="ticket-body">
-          <p class="ticket-title">Festa dos 300 Mil</p>
-          <div class="ticket-row">
-            <span>Data<b>Qua, 21/10</b></span>
-            <span>Saída<b>20h</b></span>
-            <span>Embarque<b>Pç. das Corujas</b></span>
-          </div>
-        </div>
+      </div>
+
+      <div class="hero-body">
+        <p class="hero-sub">Chegamos a <strong>300 mil seguidores</strong> e eu quero comemorar com você! Em parceria com a <strong>Carreta Furacão</strong>, a gente vai junto pra festa. São só <strong>30 vagas</strong> na carreta: garanta a sua.</p>
+        <a href="#confirmar" class="btn-party">Garantir minha vaga 🎉</a>
+        <p class="vagas-pill"><span class="vagas-dot"></span> <span data-vagas-text>Carregando vagas...</span></p>
       </div>
     </div>
   </div>
@@ -656,7 +732,7 @@ a{color:inherit;text-decoration:none;}
 
 <!-- COUNTDOWN -->
 <div class="countdown-strip">
-  <p class="countdown-label">A carreta sai em</p>
+  <p class="countdown-label">A carreta sai em...</p>
   <div class="countdown" id="countdown">
     <div class="cd-box"><b id="cd-d">--</b><span>dias</span></div>
     <div class="cd-box"><b id="cd-h">--</b><span>horas</span></div>
@@ -668,37 +744,58 @@ a{color:inherit;text-decoration:none;}
 <!-- INFO -->
 <section class="section" id="info">
   <div class="container">
-    <span class="section-label">✦ Anota aí</span>
+    <span class="section-label">Anota aí</span>
     <h2>Como vai ser o rolê</h2>
-    <p class="section-intro">A festa é fechada, só pra convidados. Quem vai de carreta se encontra na Praça das Corujas e a Carreta Furacão leva todo mundo direto pra festa.</p>
+    <p class="section-intro">A festa é fechada, só pra convidados. Quem garantir a vaga se encontra na Praça das Corujas e a Carreta Furacão leva todo mundo direto pra festa.</p>
 
-    <div class="info-grid">
-      <div class="info-card" style="--c:var(--pink);">
-        <div class="info-emoji">📍</div>
-        <p class="k">Embarque</p>
-        <p class="v">Praça das Corujas</p>
+    <div class="info-layout">
+      <div class="ticket">
+        <div class="ticket-photo">
+          <img src="/convite/luanne.jpg" alt="Luanne Trotta">
+          <span class="ticket-stamp">VIP</span>
+        </div>
+        <div class="ticket-cut"></div>
+        <div class="ticket-body">
+          <p class="ticket-sign">com carinho, Luanne</p>
+          <p class="ticket-title">Festa dos 300 Mil</p>
+          <div class="ticket-row">
+            <span>Data<b>Qua, 21/10</b></span>
+            <span>Saída<b>20h</b></span>
+            <span>Embarque<b>Pç. das Corujas</b></span>
+          </div>
+        </div>
       </div>
-      <div class="info-card" style="--c:var(--yellow);">
-        <div class="info-emoji">⏰</div>
-        <p class="k">Saída</p>
-        <p class="v">20h em ponto</p>
-      </div>
-      <div class="info-card" style="--c:var(--cyan);">
-        <div class="info-emoji">📅</div>
-        <p class="k">Quando</p>
-        <p class="v">Quarta, 21/10</p>
-      </div>
-      <div class="info-card" style="--c:var(--violet);">
-        <div class="info-emoji">🚚</div>
-        <p class="k">Carreta</p>
-        <p class="v">30 vagas</p>
-      </div>
-    </div>
 
-    <div class="notes">
-      <p class="note"><span>✅</span><span>Garanta sua vaga no formulário abaixo. São só 30 lugares e, quando completar, as confirmações fecham na hora.</span></p>
-      <p class="note"><span>⏱️</span><span>Chegue antes das 20h na Praça das Corujas. A carreta sai no horário!</span></p>
-      <p class="note"><span>🤫</span><span>O convite é pessoal. Não compartilhe este link.</span></p>
+      <div>
+        <div class="info-grid">
+          <div class="info-card" style="--c:var(--pink);">
+            <div class="info-emoji">📍</div>
+            <p class="k">Embarque</p>
+            <p class="v">Praça das Corujas</p>
+          </div>
+          <div class="info-card" style="--c:var(--yellow);">
+            <div class="info-emoji">⏰</div>
+            <p class="k">Saída</p>
+            <p class="v">20h em ponto</p>
+          </div>
+          <div class="info-card" style="--c:var(--cyan);">
+            <div class="info-emoji">📅</div>
+            <p class="k">Quando</p>
+            <p class="v">Quarta, 21/10</p>
+          </div>
+          <div class="info-card" style="--c:var(--violet);">
+            <div class="info-emoji">🎟️</div>
+            <p class="k">Carreta</p>
+            <p class="v">30 vagas</p>
+          </div>
+        </div>
+
+        <div class="notes">
+          <p class="note"><span>✅</span><span>Garanta sua vaga no formulário abaixo. São só 30 lugares e, quando completar, as confirmações fecham na hora.</span></p>
+          <p class="note"><span>⏱️</span><span>Chegue antes das 20h na Praça das Corujas. A carreta sai no horário!</span></p>
+          <p class="note"><span>🤫</span><span>O convite é pessoal. Não compartilhe este link.</span></p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -707,7 +804,7 @@ a{color:inherit;text-decoration:none;}
 <section class="section rsvp" id="confirmar">
   <div class="container rsvp-grid">
     <div>
-      <span class="section-label">✦ RSVP</span>
+      <span class="section-label">Bora?</span>
       <h2>Garanta sua vaga na carreta</h2>
       <p class="section-intro">Leva menos de um minuto. A carreta tem 30 lugares e as confirmações fecham assim que completar.</p>
       <div class="vagas-meter">
@@ -719,7 +816,7 @@ a{color:inherit;text-decoration:none;}
       </div>
     </div>
 
-    <div class="form-card">
+    <div class="form-card" id="formCard">
       <div class="soldout" id="soldout" role="status">
         <div class="soldout-emoji">🔒</div>
         <h3>Vagas esgotadas!</h3>
@@ -758,9 +855,8 @@ a{color:inherit;text-decoration:none;}
       </form>
 
       <div class="success" id="success" role="status">
-        <div class="carreta-3d" id="carreta3d" aria-label="Ilustração 3D da Carreta Furacão saindo de um furacão">
-          <div class="carreta-fallback">🚚🌪️</div>
-        </div>
+        <div class="success-art"><img src="/convite/carreta-furacao.webp" alt="Carreta Furacão" width="1067" height="1100"></div>
+        <p class="success-kicker">Uhuul, é festa!</p>
         <h3>Lugar na carreta garantido!</h3>
         <p>Te espero na <strong>Praça das Corujas</strong> na <strong>quarta, 21/10</strong>. A carreta sai às <strong>20h em ponto</strong>, chega antes!</p>
         <a href="https://instagram.com/luannetrotta" target="_blank" rel="noopener" class="btn-ig">Acompanhar no @luannetrotta</a>
@@ -778,16 +874,18 @@ a{color:inherit;text-decoration:none;}
 </footer>
 
 <script>
-// Confetti
+const CONFETTI_COLORS = ['#FF3DA5','#FFD23F','#2EE6D6','#FF7A2F','#8B5CF6','#FFF8F0'];
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// Confete caindo
 (function(){
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if(reducedMotion) return;
   const box = document.getElementById('confetti');
-  const colors = ['#FF3DA5','#FFD23F','#2EE6D6','#FF7A2F','#8B5CF6','#FFF8F0'];
   const n = window.innerWidth < 600 ? 26 : 46;
   for(let i = 0; i < n; i++){
     const c = document.createElement('i');
     c.style.left = Math.random() * 100 + 'vw';
-    c.style.background = colors[i % colors.length];
+    c.style.background = CONFETTI_COLORS[i % CONFETTI_COLORS.length];
     c.style.setProperty('--drift', (Math.random() * 120 - 60) + 'px');
     c.style.animationDuration = (7 + Math.random() * 8) + 's';
     c.style.animationDelay = (-Math.random() * 15) + 's';
@@ -855,30 +953,29 @@ async function carregarVagas(){
 carregarVagas();
 setInterval(carregarVagas, 20000);
 
-// Carrega o 3D da carreta em segundo plano, pra estar pronto na confirmação
-let carreta3dReady = null;
-function loadCarreta3D(){
-  if(carreta3dReady) return carreta3dReady;
-  const load = src => new Promise((resolve, reject) => {
-    const s = document.createElement('script');
-    s.src = src; s.onload = resolve; s.onerror = reject;
-    document.head.appendChild(s);
-  });
-  carreta3dReady = load('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js')
-    .then(() => load('/convite/carreta3d.js'));
-  return carreta3dReady;
+function confettiBurst(){
+  if(reducedMotion) return;
+  const card = document.getElementById('formCard');
+  for(let i = 0; i < 60; i++){
+    const p = document.createElement('span');
+    p.className = 'burst';
+    const ang = Math.random() * Math.PI * 2, dist = 120 + Math.random() * 220;
+    p.style.background = CONFETTI_COLORS[i % CONFETTI_COLORS.length];
+    p.style.setProperty('--x', Math.cos(ang) * dist + 'px');
+    p.style.setProperty('--y', Math.sin(ang) * dist * 0.8 - 60 + 'px');
+    p.style.setProperty('--r', (Math.random() * 900 - 450) + 'deg');
+    if(i % 3 === 0){ p.style.width = '9px'; p.style.height = '9px'; p.style.borderRadius = '50%'; }
+    card.appendChild(p);
+    setTimeout(() => p.remove(), 1500);
+  }
 }
-window.addEventListener('load', () => setTimeout(loadCarreta3D, 600));
 
 function showSuccess(){
   confirmado = true;
   form.style.display = 'none';
   document.getElementById('success').classList.add('show');
-  const stage = document.getElementById('carreta3d');
-  loadCarreta3D().then(() => {
-    if(window.Carreta3D && window.Carreta3D.mount(stage)) stage.classList.add('live');
-  }).catch(() => {});
-  document.getElementById('success').scrollIntoView({behavior:'smooth', block:'center'});
+  document.getElementById('formCard').scrollIntoView({behavior:'smooth', block:'center'});
+  confettiBurst();
 }
 
 function showError(msg){
